@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Random;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.collection.util.CollectionHelper;
 import com.openpojo.random.util.Helper;
@@ -36,38 +34,34 @@ import com.openpojo.reflection.Parameterizable;
  * @author oshoukry
  */
 public class EnumSetRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Random RANDOM = new Random(new Date().getTime());
-  private static final Class<?>[] TYPES = new Class<?>[] { EnumSet.class };
-  private static final EnumSetRandomGenerator INSTANCE = new EnumSetRandomGenerator();
 
-  public static EnumSetRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Random RANDOM = new Random(new Date().getTime());
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { EnumSet.class };
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    List<SomeEnum> someEnums = new ArrayList<SomeEnum>();
-    for (int i = 0; i < CollectionHelper.MAX_RANDOM_ELEMENTS; i++) {
-      someEnums.add(SomeEnum.values()[RANDOM.nextInt(SomeEnum.values().length - 1)]);
+    private static final EnumSetRandomGenerator INSTANCE = new EnumSetRandomGenerator();
+
+    public static EnumSetRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    return EnumSet.copyOf(someEnums);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection doGenerate(Class<?> type) {
-    return getBasicInstance(type);
-  }
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection doGenerate(Parameterizable parameterizedType) {
-    Helper.assertIsAssignableTo(parameterizedType.getType(), getTypes());
-    return EnumSet.allOf((Class) parameterizedType.getParameterTypes().get(0));
-  }
+    public Collection doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private EnumSetRandomGenerator() {
-  }
+    public Collection doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private EnumSetRandomGenerator() {
+    }
 }

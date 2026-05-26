@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm;
 
 import com.openpojo.reflection.java.Java;
@@ -25,27 +24,29 @@ import org.objectweb.asm.ClassReader;
  * @author oshoukry
  */
 public class DefaultSubClassDefinition implements SubClassDefinition {
-  private final String generatedClassName;
-  private final ClassReader classReader;
 
-  public DefaultSubClassDefinition(Class<?> parentClass) {
-    this(parentClass, parentClass.getName() + SubClassDefinition.GENERATED_CLASS_POSTFIX);
-  }
+    private final String generatedClassName;
 
-  public DefaultSubClassDefinition(Class<?> parentClass, String subClassName) {
-    this.generatedClassName = subClassName;
-    this.classReader = ClassReaderFactory.getClassReader(parentClass);
-  }
+    private final ClassReader classReader;
 
-  public ClassReader getClassReader() {
-    return classReader;
-  }
+    public DefaultSubClassDefinition(Class<?> parentClass) {
+        this(parentClass, parentClass.getName() + SubClassDefinition.GENERATED_CLASS_POSTFIX);
+    }
 
-  public String getGeneratedClassNameAsJDKPath() {
-    return generatedClassName.replace(Java.PACKAGE_DELIMITER, Java.PATH_DELIMITER);
-  }
+    public DefaultSubClassDefinition(Class<?> parentClass, String subClassName) {
+        this.generatedClassName = subClassName;
+        this.classReader = ClassReaderFactory.getClassReader(parentClass);
+    }
 
-  public String getGeneratedClassName() {
-    return generatedClassName;
-  }
+    public ClassReader getClassReader() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String getGeneratedClassNameAsJDKPath() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String getGeneratedClassName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

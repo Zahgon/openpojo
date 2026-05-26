@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Random;
-
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.util.SomeEnum;
 
@@ -32,27 +30,28 @@ import com.openpojo.random.util.SomeEnum;
  * @author oshoukry
  */
 public final class EnumRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { Enum.class };
 
-  private static final Random RANDOM = new Random(new Date().getTime());
+    private static final Class<?>[] TYPES = new Class<?>[] { Enum.class };
 
-  private EnumRandomGenerator() {
-  }
+    private static final Random RANDOM = new Random(new Date().getTime());
 
-  public static EnumRandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    private EnumRandomGenerator() {
+    }
 
-  public Object doGenerate(final Class<?> type) {
-    return SomeEnum.values()[RANDOM.nextInt(SomeEnum.values().length)];
-  }
+    public static EnumRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final EnumRandomGenerator INSTANCE = new EnumRandomGenerator();
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    private static class Instance {
+
+        private static final EnumRandomGenerator INSTANCE = new EnumRandomGenerator();
+    }
 }

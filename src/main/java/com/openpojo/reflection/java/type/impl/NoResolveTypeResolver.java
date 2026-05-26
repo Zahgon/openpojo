@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.type.impl;
 
 import java.lang.reflect.Type;
-
 import com.openpojo.reflection.java.type.TypeResolver;
 
 /**
@@ -27,15 +25,15 @@ import com.openpojo.reflection.java.type.TypeResolver;
  */
 public class NoResolveTypeResolver implements TypeResolver<Type> {
 
-  public Type getEnclosingType(Type type) {
-    return type;
-  }
+    public Type getEnclosingType(Type type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type resolveType(Type type) {
-    return type;
-  }
+    public Type resolveType(Type type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type[] getParameterTypes(Type type) {
-    return new Type[] { type };
-  }
+    public Type[] getParameterTypes(Type type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

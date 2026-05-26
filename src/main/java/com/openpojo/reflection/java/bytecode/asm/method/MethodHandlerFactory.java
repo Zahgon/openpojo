@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm.method;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import com.openpojo.reflection.java.bytecode.asm.method.impl.*;
 
 /**
@@ -28,44 +26,35 @@ import com.openpojo.reflection.java.bytecode.asm.method.impl.*;
  */
 public class MethodHandlerFactory {
 
-  private final Map<String, MethodHandler> SIGNATURE_METHOD_HANDLERS = new HashMap<String, MethodHandler>();
-  private final Map<String, MethodHandler> METHOD_NAME_HANDLERS = new HashMap<String, MethodHandler>();
-  private final Map<String, MethodHandler> RETURN_TYPE_METHOD_HANDLERS = new HashMap<String, MethodHandler>();
+    private final Map<String, MethodHandler> SIGNATURE_METHOD_HANDLERS = new HashMap<String, MethodHandler>();
 
-  private final MethodHandler DEFAULT_RETURN_TYPE_METHOD_HANDLER = new DefaultReturnTypeMethodHandler();
-  private static final MethodHandlerFactory INSTANCE = new MethodHandlerFactory();
+    private final Map<String, MethodHandler> METHOD_NAME_HANDLERS = new HashMap<String, MethodHandler>();
 
-  private MethodHandlerFactory() {
-    SIGNATURE_METHOD_HANDLERS.put("toString()Ljava/lang/String;", new ToStringMethodHandler());
+    private final Map<String, MethodHandler> RETURN_TYPE_METHOD_HANDLERS = new HashMap<String, MethodHandler>();
 
-    METHOD_NAME_HANDLERS.put("<init>", new InitMethodHandler());
+    private final MethodHandler DEFAULT_RETURN_TYPE_METHOD_HANDLER = new DefaultReturnTypeMethodHandler();
 
-    RETURN_TYPE_METHOD_HANDLERS.put("boolean", new BooleanReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("byte", new ByteReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("char", new CharReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("float", new FloatReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("short", new ShortReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("int", new IntReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("long", new LongReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("double", new DoubleReturnTypeMethodHandler());
-    RETURN_TYPE_METHOD_HANDLERS.put("void", new VoidReturnTypeMethodHandler());
-  }
+    private static final MethodHandlerFactory INSTANCE = new MethodHandlerFactory();
 
-  public MethodHandler getHandler(String methodSignature, String methodName, String returnType) {
-    MethodHandler methodHandler = SIGNATURE_METHOD_HANDLERS.get(methodSignature);
+    private MethodHandlerFactory() {
+        SIGNATURE_METHOD_HANDLERS.put("toString()Ljava/lang/String;", new ToStringMethodHandler());
+        METHOD_NAME_HANDLERS.put("<init>", new InitMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("boolean", new BooleanReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("byte", new ByteReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("char", new CharReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("float", new FloatReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("short", new ShortReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("int", new IntReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("long", new LongReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("double", new DoubleReturnTypeMethodHandler());
+        RETURN_TYPE_METHOD_HANDLERS.put("void", new VoidReturnTypeMethodHandler());
+    }
 
-    if (methodHandler == null)
-      methodHandler = METHOD_NAME_HANDLERS.get(methodName);
+    public MethodHandler getHandler(String methodSignature, String methodName, String returnType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    if (methodHandler == null)
-      methodHandler = RETURN_TYPE_METHOD_HANDLERS.get(returnType);
-
-    if (methodHandler == null)
-      methodHandler = DEFAULT_RETURN_TYPE_METHOD_HANDLER;
-    return methodHandler;
-  }
-
-  public static MethodHandlerFactory getInstance() {
-    return INSTANCE;
-  }
+    public static MethodHandlerFactory getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

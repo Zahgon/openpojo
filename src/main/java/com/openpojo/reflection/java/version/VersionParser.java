@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.version;
 
 import java.util.ArrayList;
@@ -26,30 +25,11 @@ import java.util.List;
  */
 public class VersionParser {
 
-  public static List<Integer> getVersionParts(String version) {
-    List<Integer> parts = new ArrayList<Integer>();
-    if (version == null)
-      return parts;
-
-    String part = "";
-    for (char c : version.toCharArray()) {
-      if (c >= '0' && c <= '9')
-        part += c;
-      if (c == '.') {
-        if (part.length() > 0)
-          parts.add(Integer.parseInt(part));
-        part = "";
-      }
+    public static List<Integer> getVersionParts(String version) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    if (part.length() > 0)
-      parts.add(Integer.parseInt(part));
-
-    return parts;
-  }
-
-  private VersionParser() {
-    throw new UnsupportedOperationException(VersionParser.class.getName() +  " should not be constructed!");
-
-  }
+    private VersionParser() {
+        throw new UnsupportedOperationException(VersionParser.class.getName() + " should not be constructed!");
+    }
 }

@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.adapt.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoField;
 import com.openpojo.reflection.adapt.PojoClassAdapter;
@@ -31,26 +29,21 @@ import com.openpojo.reflection.impl.PojoClassImpl;
  */
 public class CloverPojoClassAdapter implements PojoClassAdapter {
 
-  private static final String CLOVER_INJECTED = "__CLR";
+    private static final String CLOVER_INJECTED = "__CLR";
 
-  private CloverPojoClassAdapter() {
-  }
-
-  public static PojoClassAdapter getInstance() {
-    return Instance.INSTANCE;
-  }
-
-  public PojoClass adapt(PojoClass pojoClass) {
-    final List<PojoField> cleansedPojoFields = new ArrayList<PojoField>();
-    for (final PojoField pojoField : pojoClass.getPojoFields()) {
-      if (!pojoField.getName().startsWith(CLOVER_INJECTED)) {
-        cleansedPojoFields.add(pojoField);
-      }
+    private CloverPojoClassAdapter() {
     }
-    return new PojoClassImpl(pojoClass.getClazz(), cleansedPojoFields, pojoClass.getPojoMethods());
-  }
 
-  private static class Instance {
-    private static final CloverPojoClassAdapter INSTANCE = new CloverPojoClassAdapter();
-  }
+    public static PojoClassAdapter getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public PojoClass adapt(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private static class Instance {
+
+        private static final CloverPojoClassAdapter INSTANCE = new CloverPojoClassAdapter();
+    }
 }

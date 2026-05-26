@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm.method.impl;
 
 import com.openpojo.reflection.java.Java;
@@ -26,25 +25,30 @@ import org.objectweb.asm.Type;
  * @author oshoukry
  */
 public class IntReturnTypeMethodHandler extends AbstractReturnTypeMethodHandler {
-  private static final Type HANDLER_TYPE = Type.getObjectType(Integer.class.getName());
-  private static final int OPCODE = Opcodes.IRETURN;
-  private static final String asPrimitiveMethod = "intValue";
-  private static final String RETURN_DESCRIPTION = "()I";
-  private static final String CLASS_PATH= HANDLER_TYPE.getClassName().replace(Java.PACKAGE_DELIMITER, Java.PATH_DELIMITER);
 
-  protected String getInternalName() {
-    return CLASS_PATH;
-  }
+    private static final Type HANDLER_TYPE = Type.getObjectType(Integer.class.getName());
 
-  protected String getAsPrimitiveMethod() {
-    return  asPrimitiveMethod;
-  }
+    private static final int OPCODE = Opcodes.IRETURN;
 
-  protected String getReturnDescription() {
-    return RETURN_DESCRIPTION;
-  }
+    private static final String asPrimitiveMethod = "intValue";
 
-  protected int getOpCode() {
-    return OPCODE;
-  }
+    private static final String RETURN_DESCRIPTION = "()I";
+
+    private static final String CLASS_PATH = HANDLER_TYPE.getClassName().replace(Java.PACKAGE_DELIMITER, Java.PATH_DELIMITER);
+
+    protected String getInternalName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    protected String getAsPrimitiveMethod() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    protected String getReturnDescription() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    protected int getOpCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.impl;
 
 import com.openpojo.reflection.PojoClassFilter;
@@ -26,32 +25,33 @@ import com.openpojo.reflection.adapt.impl.JacocoPojoClassAdapter;
  * @author oshoukry
  */
 public class Jacoco extends AbstractCoverageDetector {
-  private static final Jacoco INSTANCE = new Jacoco();
 
-  private Jacoco() {
-  }
+    private static final Jacoco INSTANCE = new Jacoco();
 
-  public static Jacoco getInstance() {
-    return INSTANCE;
-  }
+    private Jacoco() {
+    }
 
-  @Override
-  public String getName() {
-    return "Jacoco";
-  }
+    public static Jacoco getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String getCoverageClassName() {
-    return "org.jacoco.agent.rt.IAgent";
-  }
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public PojoClassFilter getPojoClassFilter() {
-    return null;
-  }
+    @Override
+    public String getCoverageClassName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public PojoClassAdapter getPojoClassAdapter() {
-    return JacocoPojoClassAdapter.getInstance();
-  }
+    @Override
+    public PojoClassFilter getPojoClassFilter() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public PojoClassAdapter getPojoClassAdapter() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

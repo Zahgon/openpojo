@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.service.impl;
 
 import com.openpojo.reflection.PojoClass;
@@ -27,20 +26,19 @@ import com.openpojo.reflection.coverage.service.PojoCoverageFilterService;
  */
 public class DefaultPojoCoverageFilterService implements PojoCoverageFilterService {
 
-  private PojoClassCoverageFilter pojoClassCoverageFilter = new PojoClassCoverageFilter();
-  private PojoClassCoverageAdapter pojoClassCoverageAdapter = new PojoClassCoverageAdapter();
+    private PojoClassCoverageFilter pojoClassCoverageFilter = new PojoClassCoverageFilter();
 
-  public synchronized void registerCoverageDetector(CoverageDetector coverageDetector) {
-    pojoClassCoverageFilter.add(coverageDetector.getPojoClassFilter());
-    pojoClassCoverageAdapter.add(coverageDetector.getPojoClassAdapter());
-  }
+    private PojoClassCoverageAdapter pojoClassCoverageAdapter = new PojoClassCoverageAdapter();
 
-  public PojoClass adapt(PojoClass pojoClass) {
-    return pojoClassCoverageAdapter.adapt(pojoClass);
-  }
+    public synchronized void registerCoverageDetector(CoverageDetector coverageDetector) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean include(PojoClass pojoClass) {
-    return pojoClassCoverageFilter.include(pojoClass);
-  }
+    public PojoClass adapt(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    public boolean include(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.registry;
 
 import com.openpojo.business.BusinessIdentity;
@@ -47,156 +46,62 @@ import com.openpojo.reflection.service.impl.DefaultPojoClassLookupService;
  * @author oshoukry
  */
 public class ServiceRegistrar {
-  private PojoCoverageFilterService pojoCoverageFilterService;
-  private RandomGeneratorService randomGeneratorService;
-  private PojoClassLookupService pojoClassLookupService;
 
-  private ServiceRegistrar() {
-    initializePojoCoverageFilterService();
-    initializePojoClassLookupService();
-    initializeRandomGeneratorService();
-  }
+    private PojoCoverageFilterService pojoCoverageFilterService;
 
-  private void initializePojoCoverageFilterService() {
-    setPojoCoverageFilterService(PojoCoverageFilterServiceFactory.configureAndGetPojoCoverageFilterService());
-  }
+    private RandomGeneratorService randomGeneratorService;
 
-  public void initializeRandomGeneratorService() {
+    private PojoClassLookupService pojoClassLookupService;
 
-    final RandomGeneratorService newRandomGeneratorService = new DefaultRandomGeneratorService();
+    private ServiceRegistrar() {
+        initializePojoCoverageFilterService();
+        initializePojoClassLookupService();
+        initializeRandomGeneratorService();
+    }
 
-    // TODO: This code needs to move out of the registrar.
-    // Default Generator
-    newRandomGeneratorService.setDefaultRandomGenerator(new DefaultRandomGenerator());
+    private void initializePojoCoverageFilterService() {
+        setPojoCoverageFilterService(PojoCoverageFilterServiceFactory.configureAndGetPojoCoverageFilterService());
+    }
 
-    // register basic types.
-    newRandomGeneratorService.registerRandomGenerator(VoidRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ObjectRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ClassRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(BasicRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(TimestampRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(EnumRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(UUIDRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(URLRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(URIRandomGenerator.getInstance());
+    public void initializeRandomGeneratorService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // AWT
-    newRandomGeneratorService.registerRandomGenerator(BufferedImageRandomGenerator.getInstance());
+    public void initializePojoClassLookupService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Time
-    newRandomGeneratorService.registerRandomGenerator(ZonedDateTimeRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ZoneIdRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(InstantRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(TimeZoneRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(XMLGregorianCalendarRandomGenerator.getInstance());
+    public static ServiceRegistrar getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Security
-    newRandomGeneratorService.registerRandomGenerator(CredentialsRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(PrincipalNameRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(EncryptionKeyRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(KerberosTimeRandomGenerator.getInstance());
+    public void setRandomGeneratorService(final RandomGeneratorService randomGeneratorService) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Collection
-    newRandomGeneratorService.registerRandomGenerator(AbstractCollectionRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(CollectionRandomGenerator.getInstance());
+    public RandomGeneratorService getRandomGeneratorService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Lists
-    newRandomGeneratorService.registerRandomGenerator(AbstractListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(AbstractSequentialListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(AttributeListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ArrayListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(CopyOnWriteArrayListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(LinkedListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(RoleListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(RoleUnresolvedListRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(StackRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(VectorRandomGenerator.getInstance());
+    public PojoClassLookupService getPojoClassLookupService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Sets
-    newRandomGeneratorService.registerRandomGenerator(AbstractSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ConcurrentSkipListSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(CopyOnWriteArraySetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(EnumSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(HashSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(JobStateReasonsRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(LinkedHashSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(NavigableSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(SetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(SortedSetRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(TreeSetRandomGenerator.getInstance());
+    public PojoCoverageFilterService getPojoCoverageFilterService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Queue
-    newRandomGeneratorService.registerRandomGenerator(AbstractQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ArrayBlockingQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ArrayDequeRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(BlockingDequeRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(BlockingQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ConcurrentLinkedDequeRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ConcurrentLinkedQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(DelayQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(DequeRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(LinkedBlockingDequeRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(LinkedBlockingQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(LinkedTransferQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(PriorityBlockingQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(PriorityQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(QueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(SynchronousQueueRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(TransferQueueRandomGenerator.getInstance());
+    public void setPojoCoverageFilterService(PojoCoverageFilterService pojoCoverageFilterService) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    // Map
-    newRandomGeneratorService.registerRandomGenerator(AbstractMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ConcurrentHashMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(ConcurrentMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(EnumMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(HashMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(HashtableRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(IdentityHashMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(LinkedHashMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(MapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(NavigableMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(SortedMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(TreeMapRandomGenerator.getInstance());
-    newRandomGeneratorService.registerRandomGenerator(WeakHashMapRandomGenerator.getInstance());
-    setRandomGeneratorService(newRandomGeneratorService);
-  }
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void initializePojoClassLookupService() {
-    pojoClassLookupService = new DefaultPojoClassLookupService();
-  }
+    private static class Instance {
 
-  public static ServiceRegistrar getInstance() {
-    return Instance.INSTANCE;
-  }
-
-  public void setRandomGeneratorService(final RandomGeneratorService randomGeneratorService) {
-    this.randomGeneratorService = randomGeneratorService;
-  }
-
-  public RandomGeneratorService getRandomGeneratorService() {
-    return randomGeneratorService;
-  }
-
-  public PojoClassLookupService getPojoClassLookupService() {
-    return pojoClassLookupService;
-  }
-
-  public PojoCoverageFilterService getPojoCoverageFilterService() {
-    return pojoCoverageFilterService;
-  }
-
-  public void setPojoCoverageFilterService(PojoCoverageFilterService pojoCoverageFilterService) {
-    this.pojoCoverageFilterService = pojoCoverageFilterService;
-  }
-
-  @Override
-  public String toString() {
-    return BusinessIdentity.toString(this);
-  }
-
-  private static class Instance {
-    private static final ServiceRegistrar INSTANCE = new ServiceRegistrar();
-  }
-
+        private static final ServiceRegistrar INSTANCE = new ServiceRegistrar();
+    }
 }

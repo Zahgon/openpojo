@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.TreeSet;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -29,23 +27,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class TreeSetRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { TreeSet.class };
-  private static final TreeSetRandomGenerator INSTANCE = new TreeSetRandomGenerator();
 
-  public static TreeSetRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { TreeSet.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final TreeSetRandomGenerator INSTANCE = new TreeSetRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new TreeSet();
-  }
+    public static TreeSetRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private TreeSetRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private TreeSetRandomGenerator() {
+    }
 }

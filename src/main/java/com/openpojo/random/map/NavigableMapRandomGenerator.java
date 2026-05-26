@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map;
 
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
 import com.openpojo.random.map.util.BaseMapRandomGenerator;
 import com.openpojo.random.map.util.MapHelper;
 import com.openpojo.random.util.Helper;
@@ -34,26 +32,24 @@ import com.openpojo.reflection.java.load.ClassUtil;
  * @author oshoukry
  */
 public class NavigableMapRandomGenerator extends BaseMapRandomGenerator {
-  private static final String TYPE = "java.util.NavigableMap";
-  private static final NavigableMapRandomGenerator INSTANCE = new NavigableMapRandomGenerator();
 
-  public static NavigableMapRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final String TYPE = "java.util.NavigableMap";
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> types = new ArrayList<Class<?>>();
-    if (ClassUtil.isClassLoaded(TYPE))
-      types.add(ClassUtil.loadClass(TYPE));
-    return types;
-  }
+    private static final NavigableMapRandomGenerator INSTANCE = new NavigableMapRandomGenerator();
 
-  @Override
-  protected Map getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return MapHelper.buildMap(new TreeMap(), SerializableComparableObject.class, SerializableComparableObject.class);
-  }
+    public static NavigableMapRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private NavigableMapRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Map getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private NavigableMapRandomGenerator() {
+    }
 }

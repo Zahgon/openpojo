@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.identity.impl;
 
 import com.openpojo.business.cache.BusinessKeyField;
@@ -34,25 +33,17 @@ import com.openpojo.business.utils.BusinessPojoHelper;
  * @author oshoukry
  */
 class DefaultIdentityEvaluator implements IdentityEvaluator {
-  private static final IdentityEvaluator INSTANCE = new DefaultIdentityEvaluator();
 
-  private DefaultIdentityEvaluator() {
-  }
+    private static final IdentityEvaluator INSTANCE = new DefaultIdentityEvaluator();
 
-  public static IdentityEvaluator getInstance() {
-    return INSTANCE;
-  }
-
-  public boolean areEqual(final Object first, final Object second) {
-    if (BusinessIdentityUtils.sameInstance(first, second))
-      return true;
-
-    boolean runningEquality = true;
-    for (BusinessKeyField pojoField : BusinessPojoHelper.getBusinessKeyFields(first.getClass())) {
-      runningEquality = runningEquality
-          && BusinessIdentityUtils.areEqual(pojoField, first, second, pojoField.isCaseSensitive());
+    private DefaultIdentityEvaluator() {
     }
-    return runningEquality;
-  }
 
+    public static IdentityEvaluator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean areEqual(final Object first, final Object second) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.time.util;
 
 import java.lang.reflect.Method;
-
 import com.openpojo.random.exception.RandomGeneratorException;
 
 /**
@@ -27,23 +25,15 @@ import com.openpojo.random.exception.RandomGeneratorException;
  */
 public class ReflectionHelper {
 
-  public static Object invokeMethod(Method method, Object instance, Object ... params) {
-    try {
-      return method.invoke(instance, params);
-    } catch (Exception e) {
-      throw RandomGeneratorException.getInstance(e.getMessage(), e);
+    public static Object invokeMethod(Method method, Object instance, Object... params) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  public static Method getMethod(Class <?> onClass, String methodName, Class<?> ... types) {
-    try {
-      return onClass.getMethod(methodName, types);
-    } catch (Exception e) {
-      throw RandomGeneratorException.getInstance(e.getMessage(), e);
+    public static Method getMethod(Class<?> onClass, String methodName, Class<?>... types) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  private ReflectionHelper() {
-    throw new UnsupportedOperationException(ReflectionHelper.class.getName() +  " should not be constructed!");
-  }
+    private ReflectionHelper() {
+        throw new UnsupportedOperationException(ReflectionHelper.class.getName() + " should not be constructed!");
+    }
 }

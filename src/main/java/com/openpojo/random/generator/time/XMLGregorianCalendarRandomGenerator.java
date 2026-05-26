@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.time;
 
 import java.sql.Timestamp;
@@ -25,7 +24,6 @@ import java.util.GregorianCalendar;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.exception.RandomGeneratorException;
@@ -34,30 +32,23 @@ import com.openpojo.random.exception.RandomGeneratorException;
  * @author oshoukry
  */
 public class XMLGregorianCalendarRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { XMLGregorianCalendar.class };
-  private static final XMLGregorianCalendarRandomGenerator INSTANCE = new XMLGregorianCalendarRandomGenerator();
 
-  private XMLGregorianCalendarRandomGenerator() {}
+    private static final Class<?>[] TYPES = new Class<?>[] { XMLGregorianCalendar.class };
 
-  public static RandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final XMLGregorianCalendarRandomGenerator INSTANCE = new XMLGregorianCalendarRandomGenerator();
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
-
-  public Object doGenerate(final Class<?> type) {
-    GregorianCalendar gregorianCalendar = new GregorianCalendar();
-
-    //noinspection ConstantConditions
-    gregorianCalendar.setTime(RandomFactory.getRandomValue(Timestamp.class));
-
-    try {
-      return DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
-    } catch (DatatypeConfigurationException e) {
-      throw RandomGeneratorException.getInstance(e.getMessage(), e);
+    private XMLGregorianCalendarRandomGenerator() {
     }
-  }
 
+    public static RandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

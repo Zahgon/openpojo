@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.AbstractSet;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -30,23 +28,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class AbstractSetRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { AbstractSet.class };
-  private static final AbstractSetRandomGenerator INSTANCE = new AbstractSetRandomGenerator();
 
-  public static AbstractSetRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { AbstractSet.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final AbstractSetRandomGenerator INSTANCE = new AbstractSetRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new HashSet();
-  }
+    public static AbstractSetRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private AbstractSetRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private AbstractSetRandomGenerator() {
+    }
 }

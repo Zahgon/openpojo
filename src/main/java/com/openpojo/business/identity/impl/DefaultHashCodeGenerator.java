@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.identity.impl;
 
 import com.openpojo.business.cache.BusinessKeyField;
@@ -34,27 +33,18 @@ import com.openpojo.business.utils.BusinessPojoHelper;
  *
  * @author oshoukry
  */
-
 class DefaultHashCodeGenerator implements HashCodeGenerator {
-  private static final HashCodeGenerator INSTANCE = new DefaultHashCodeGenerator();
 
-  private DefaultHashCodeGenerator() {
-  }
+    private static final HashCodeGenerator INSTANCE = new DefaultHashCodeGenerator();
 
-  public static HashCodeGenerator getInstance() {
-    return INSTANCE;
-  }
+    private DefaultHashCodeGenerator() {
+    }
 
+    public static HashCodeGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int doGenerate(final Object object) {
-    if (object == null)
-      throw BusinessException.getInstance("null parameter passed object=[null]");
-
-    final int prime = 31;
-    int result = 1;
-
-    for (BusinessKeyField businessKeyField : BusinessPojoHelper.getBusinessKeyFields(object.getClass()))
-      result = prime * result + BusinessIdentityUtils.getHashCode(businessKeyField, object, businessKeyField.isCaseSensitive());
-    return result;
-  }
+    public int doGenerate(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.openpojo.random.RandomGenerator;
 
 /**
@@ -29,25 +27,26 @@ import com.openpojo.random.RandomGenerator;
  * @author oshoukry
  */
 public class VoidRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { void.class };
 
-  private VoidRandomGenerator() {
+    private static final Class<?>[] TYPES = new Class<?>[] { void.class };
 
-  }
+    private VoidRandomGenerator() {
+    }
 
-  public static RandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    public static RandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Object doGenerate(final Class<?> type) {
-    return null;
-  }
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final RandomGenerator INSTANCE = new VoidRandomGenerator();
-  }
+    private static class Instance {
+
+        private static final RandomGenerator INSTANCE = new VoidRandomGenerator();
+    }
 }

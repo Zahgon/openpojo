@@ -15,28 +15,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.cache.impl;
 
 import java.util.HashMap;
-
 import com.openpojo.cache.CacheStorage;
 
 /**
  * @author oshoukry
  */
 public class StrongRefHashMapCacheStorage<T> implements CacheStorage<T> {
-  private HashMap<String, T> storage = new HashMap<String, T>();
 
-  public void add(String name, T value) {
-    storage.put(name, value);
-  }
+    private HashMap<String, T> storage = new HashMap<String, T>();
 
-  public T get(String name) {
-    return storage.get(name);
-  }
+    public void add(String name, T value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void clear() {
-    storage.clear();
-  }
+    public T get(String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void clear() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

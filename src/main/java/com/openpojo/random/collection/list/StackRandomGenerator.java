@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.list;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Stack;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -29,23 +27,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class StackRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { Stack.class };
-  private static final StackRandomGenerator INSTANCE = new StackRandomGenerator();
 
-  public static StackRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { Stack.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final StackRandomGenerator INSTANCE = new StackRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new Stack();
-  }
+    public static StackRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private StackRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private StackRandomGenerator() {
+    }
 }

@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.affirm;
 
 import com.openpojo.log.Logger;
@@ -30,64 +29,63 @@ import com.openpojo.reflection.facade.FacadeFactory;
  * @author oshoukry
  */
 public final class AffirmationFactory {
-  private static final String[] SUPPORTED_ASSERTIONS = new String[] {
-      "com.openpojo.validation.affirm.TestNGAssertAffirmation",
-      "com.openpojo.validation.affirm.JUnitAssertAffirmation",
-      "com.openpojo.validation.affirm.JavaAssertionAffirmation" };
 
-  private static final Logger log = LoggerFactory.getLogger(Affirmation.class);
+    private static final String[] SUPPORTED_ASSERTIONS = new String[] { "com.openpojo.validation.affirm.TestNGAssertAffirmation", "com.openpojo.validation.affirm.JUnitAssertAffirmation", "com.openpojo.validation.affirm.JavaAssertionAffirmation" };
 
-  /**
-   * The only affirmation implemented so far, so default to that.
-   */
-  private Affirmation affirmation;
+    private static final Logger log = LoggerFactory.getLogger(Affirmation.class);
 
-  private AffirmationFactory() {
-    affirmation = getActiveAffirmation();
-    log.info("Dynamically setting affirmation implementation = [{0}]", affirmation);
-  }
+    /**
+     * The only affirmation implemented so far, so default to that.
+     */
+    private Affirmation affirmation;
 
-  /**
-   * Get the Factory Instance.
-   *
-   * @return An AffirmationFactoryInstance.
-   */
-  public static AffirmationFactory getInstance() {
-    return Instance.INSTANCE;
-  }
+    private AffirmationFactory() {
+        affirmation = getActiveAffirmation();
+        log.info("Dynamically setting affirmation implementation = [{0}]", affirmation);
+    }
 
-  /**
-   * Get the underlying currently active Affirmation.
-   *
-   * @return The currently active affirmation.
-   */
-  public Affirmation getAffirmation() {
-    return affirmation;
-  }
+    /**
+     * Get the Factory Instance.
+     *
+     * @return An AffirmationFactoryInstance.
+     */
+    public static AffirmationFactory getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * This method allows full control to set the active affirmation to a specific one.
-   *
-   * @param affirmation
-   *     The Affirmation class to use.
-   */
-  public void setActiveAffirmation(final Affirmation affirmation) {
-    this.affirmation = affirmation;
-  }
+    /**
+     * Get the underlying currently active Affirmation.
+     *
+     * @return The currently active affirmation.
+     */
+    public Affirmation getAffirmation() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static Affirmation getActiveAffirmation() {
-    PojoClass loggerPojoClass = FacadeFactory.getLoadedFacadePojoClass(SUPPORTED_ASSERTIONS);
-    return (Affirmation) InstanceFactory.getInstance(loggerPojoClass);
-  }
+    /**
+     * This method allows full control to set the active affirmation to a specific one.
+     *
+     * @param affirmation
+     *     The Affirmation class to use.
+     */
+    public void setActiveAffirmation(final Affirmation affirmation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * This inner static class holds an instance of the holding class.<br>
-   * This allows to have lazy instantiation on singleton and not need any
-   * synchronization delays.
-   *
-   * @author oshoukry
-   */
-  private static class Instance {
-    private static final AffirmationFactory INSTANCE = new AffirmationFactory();
-  }
+    private static Affirmation getActiveAffirmation() {
+        PojoClass loggerPojoClass = FacadeFactory.getLoadedFacadePojoClass(SUPPORTED_ASSERTIONS);
+        return (Affirmation) InstanceFactory.getInstance(loggerPojoClass);
+    }
+
+    /**
+     * This inner static class holds an instance of the holding class.<br>
+     * This allows to have lazy instantiation on singleton and not need any
+     * synchronization delays.
+     *
+     * @author oshoukry
+     */
+    private static class Instance {
+
+        private static final AffirmationFactory INSTANCE = new AffirmationFactory();
+    }
 }

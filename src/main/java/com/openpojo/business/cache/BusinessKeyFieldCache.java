@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.cache;
 
 import java.util.List;
-
 import com.openpojo.cache.CacheStorage;
 import com.openpojo.cache.CacheStorageFactory;
 
@@ -29,28 +27,29 @@ import com.openpojo.cache.CacheStorageFactory;
  * @author oshoukry
  */
 public class BusinessKeyFieldCache {
-  private CacheStorage<List<BusinessKeyField>> cache = CacheStorageFactory.getPersistentCacheStorage();
 
-  /**
-   * Retrieve a BusinessFields list from Cache.
-   *
-   * @param name
-   *     The cache tag to use for cache lookup.
-   * @return Cached PojoReference, or null if none found.
-   */
-  public List<BusinessKeyField> get(final String name) {
-    return cache.get(name);
-  }
+    private CacheStorage<List<BusinessKeyField>> cache = CacheStorageFactory.getPersistentCacheStorage();
 
-  /**
-   * Add a BusinessFields definition to the Cache.
-   *
-   * @param name
-   *     A tag for to use for cache lookup
-   * @param businessFields
-   *     The list of businessFields to cache
-   */
-  public void add(final String name, final List<BusinessKeyField> businessFields) {
-    cache.add(name, businessFields);
-  }
+    /**
+     * Retrieve a BusinessFields list from Cache.
+     *
+     * @param name
+     *     The cache tag to use for cache lookup.
+     * @return Cached PojoReference, or null if none found.
+     */
+    public List<BusinessKeyField> get(final String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Add a BusinessFields definition to the Cache.
+     *
+     * @param name
+     *     A tag for to use for cache lookup
+     * @param businessFields
+     *     The list of businessFields to cache
+     */
+    public void add(final String name, final List<BusinessKeyField> businessFields) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

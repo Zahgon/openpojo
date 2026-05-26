@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.time;
 
 import java.util.ArrayList;
@@ -23,34 +22,36 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 import java.util.TimeZone;
-
 import com.openpojo.random.RandomGenerator;
 
 /**
  * @author oshoukry
  */
 public class TimeZoneRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPE = { TimeZone.class };
-  private static final TimeZoneRandomGenerator INSTANCE = new TimeZoneRandomGenerator();
-  private static final Random RANDOM = new Random(System.currentTimeMillis());
-  private final ArrayList<String> availableZones;
 
-  private TimeZoneRandomGenerator() {
-    availableZones = new ArrayList<String>();
-    String[] zones = TimeZone.getAvailableIDs();
-    availableZones.addAll(Arrays.asList(zones));}
+    private static final Class<?>[] TYPE = { TimeZone.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPE);
-  }
+    private static final TimeZoneRandomGenerator INSTANCE = new TimeZoneRandomGenerator();
 
-  public Object doGenerate(Class<?> type) {
-    String anyZone = availableZones.get(RANDOM.nextInt(availableZones.size()));
-    return TimeZone.getTimeZone(anyZone);
-  }
+    private static final Random RANDOM = new Random(System.currentTimeMillis());
 
-  public static TimeZoneRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private final ArrayList<String> availableZones;
 
+    private TimeZoneRandomGenerator() {
+        availableZones = new ArrayList<String>();
+        String[] zones = TimeZone.getAvailableIDs();
+        availableZones.addAll(Arrays.asList(zones));
+    }
+
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public static TimeZoneRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

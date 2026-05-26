@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.net.MalformedURLException;
@@ -23,7 +22,6 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.UUID;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.exception.RandomGeneratorException;
@@ -32,34 +30,32 @@ import com.openpojo.random.exception.RandomGeneratorException;
  * @author oshoukry
  */
 public class URLRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { URL.class };
-  private String urlPrefix = "http://randomurl.openpojo.com/";
 
-  private URLRandomGenerator() {
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { URL.class };
 
-  public static URLRandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    private String urlPrefix = "http://randomurl.openpojo.com/";
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
-
-  public void setUrlPrefix(String hostPrefix) {
-    this.urlPrefix = hostPrefix;
-  }
-
-  public Object doGenerate(Class<?> type) {
-    String entry = urlPrefix + RandomFactory.getRandomValue(UUID.class) + "/";
-    try {
-      return new URL(entry);
-    } catch (MalformedURLException me) {
-      throw RandomGeneratorException.getInstance("Failed to create random URL (Invalid urlPrefix set?): " + entry, me);
+    private URLRandomGenerator() {
     }
-  }
 
-  private static class Instance {
-    private static final URLRandomGenerator INSTANCE = new URLRandomGenerator();
-  }
+    public static URLRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void setUrlPrefix(String hostPrefix) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private static class Instance {
+
+        private static final URLRandomGenerator INSTANCE = new URLRandomGenerator();
+    }
 }

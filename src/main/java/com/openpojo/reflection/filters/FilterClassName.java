@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.filters;
 
 import java.util.regex.Pattern;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoClassFilter;
 
@@ -34,34 +32,28 @@ import com.openpojo.reflection.PojoClassFilter;
  * @author oshoukry
  */
 public class FilterClassName implements PojoClassFilter {
-  //Since Pattern doesn't implement equals, relying on String for equals & hashCode instead.
-  private final String regex;
-  private final Pattern pattern;
 
-  public FilterClassName(String regex) {
-    this.regex = regex;
-    this.pattern = Pattern.compile(regex);
-  }
+    //Since Pattern doesn't implement equals, relying on String for equals & hashCode instead.
+    private final String regex;
 
-  public boolean include(PojoClass pojoClass) {
-    return pattern.matcher(pojoClass.getName()).find();
-  }
+    private final Pattern pattern;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    public FilterClassName(String regex) {
+        this.regex = regex;
+        this.pattern = Pattern.compile(regex);
+    }
 
-    FilterClassName that = (FilterClassName) o;
+    public boolean include(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return regex.equals(that.regex);
-  }
+    @Override
+    public boolean equals(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public int hashCode() {
-    return regex.hashCode();
-  }
-
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

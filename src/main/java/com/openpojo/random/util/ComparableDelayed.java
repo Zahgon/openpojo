@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.util;
 
 import java.util.concurrent.Delayed;
@@ -25,17 +24,14 @@ import java.util.concurrent.TimeUnit;
  * @author oshoukry
  */
 public class ComparableDelayed implements Delayed {
-  private final long delay = (System.currentTimeMillis() % 5) - 3;
 
-  public long getDelay(TimeUnit unit) {
-    return delay;
-  }
+    private final long delay = (System.currentTimeMillis() % 5) - 3;
 
-  public int compareTo(Delayed other) {
-    if (other == null || this.hashCode() > other.hashCode())
-      return 1;
-    if (this.hashCode() == other.hashCode())
-      return 0;
-    return -1;
-  }
+    public long getDelay(TimeUnit unit) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public int compareTo(Delayed other) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

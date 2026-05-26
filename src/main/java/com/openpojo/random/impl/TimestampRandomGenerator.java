@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 
@@ -31,25 +29,26 @@ import com.openpojo.random.RandomGenerator;
  * @author oshoukry
  */
 public final class TimestampRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { Timestamp.class };
 
-  private TimestampRandomGenerator() {
+    private static final Class<?>[] TYPES = new Class<?>[] { Timestamp.class };
 
-  }
+    private TimestampRandomGenerator() {
+    }
 
-  public static RandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    public static RandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Object doGenerate(final Class<?> type) {
-    return new Timestamp(RandomFactory.getRandomValue(Long.class));
-  }
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final RandomGenerator INSTANCE = new TimestampRandomGenerator();
-  }
+    private static class Instance {
+
+        private static final RandomGenerator INSTANCE = new TimestampRandomGenerator();
+    }
 }

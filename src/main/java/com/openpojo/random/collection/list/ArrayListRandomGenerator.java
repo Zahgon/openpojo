@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -29,23 +27,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class ArrayListRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { ArrayList.class };
-  private static final ArrayListRandomGenerator INSTANCE = new ArrayListRandomGenerator();
 
-  public static ArrayListRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { ArrayList.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final ArrayListRandomGenerator INSTANCE = new ArrayListRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new ArrayList();
-  }
+    public static ArrayListRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private ArrayListRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private ArrayListRandomGenerator() {
+    }
 }

@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.net.URI;
@@ -23,7 +22,6 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.UUID;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.exception.RandomGeneratorException;
@@ -32,35 +30,32 @@ import com.openpojo.random.exception.RandomGeneratorException;
  * @author oshoukry
  */
 public class URIRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { URI.class };
-  private String uriPrefix = "http://randomuri.openpojo.com/";
 
-  private URIRandomGenerator() {
+    private static final Class<?>[] TYPES = new Class<?>[] { URI.class };
 
-  }
+    private String uriPrefix = "http://randomuri.openpojo.com/";
 
-  public static URIRandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
-
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
-
-  public Object doGenerate(Class<?> type) {
-    String entry = uriPrefix + RandomFactory.getRandomValue(UUID.class) + "/";
-    try {
-      return new URI(entry);
-    } catch (URISyntaxException use) {
-      throw RandomGeneratorException.getInstance("Failed to create random URI (Invalid uriPrefix set?): " + entry, use);
+    private URIRandomGenerator() {
     }
-  }
 
-  public void setUriPrefix(String uriPrefix) {
-    this.uriPrefix = uriPrefix;
-  }
+    public static URIRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final URIRandomGenerator INSTANCE = new URIRandomGenerator();
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void setUriPrefix(String uriPrefix) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private static class Instance {
+
+        private static final URIRandomGenerator INSTANCE = new URIRandomGenerator();
+    }
 }

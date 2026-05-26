@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map.util;
 
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.Map;
 import java.util.Random;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.reflection.impl.ParameterizableFactory;
 
@@ -34,26 +32,16 @@ import com.openpojo.reflection.impl.ParameterizableFactory;
  */
 public class MapHelper {
 
-  private static final Random RANDOM = new Random(new Date().getTime());
-  private static final int MAX_RANDOM_ELEMENTS = 5;
+    private static final Random RANDOM = new Random(new Date().getTime());
 
-  @SuppressWarnings("unchecked")
-  public static Map buildMap(Map map, Type key, Type value) {
-    if (key == null || value == null || map == null)
-      return map;
+    private static final int MAX_RANDOM_ELEMENTS = 5;
 
-    int counter = RANDOM.nextInt(MAX_RANDOM_ELEMENTS) + 1;
-    map.clear();
-
-    while (counter-- > 0) {
-      Object nextKey = RandomFactory.getRandomValue(ParameterizableFactory.getInstance(key));
-      Object nextValue = RandomFactory.getRandomValue(ParameterizableFactory.getInstance(value));
-      map.put(nextKey, nextValue);
+    @SuppressWarnings("unchecked")
+    public static Map buildMap(Map map, Type key, Type value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return map;
-  }
 
-  private MapHelper() {
-    throw new UnsupportedOperationException(MapHelper.class.getName() + " should not be constructed!");
-  }
+    private MapHelper() {
+        throw new UnsupportedOperationException(MapHelper.class.getName() + " should not be constructed!");
+    }
 }

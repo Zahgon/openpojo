@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.packageloader.reader;
 
 import java.io.IOException;
@@ -33,12 +32,10 @@ import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
-
 import com.openpojo.reflection.exception.ReflectionException;
 import com.openpojo.reflection.java.Java;
 import com.openpojo.reflection.java.packageloader.impl.URLToFileSystemAdapter;
 import com.openpojo.reflection.java.packageloader.utils.Helper;
-
 import static com.openpojo.reflection.java.packageloader.utils.Helper.getFQClassName;
 import static com.openpojo.reflection.java.packageloader.utils.Helper.isClass;
 
@@ -50,103 +47,75 @@ import static com.openpojo.reflection.java.packageloader.utils.Helper.isClass;
  */
 public class JarFileReader {
 
-  private JarFile jarFile = null;
-  private Set<String> classNames;
+    private JarFile jarFile = null;
 
-  private JarFileReader(String jarFilePath) {
-    try {
-      jarFile = new JarFile(jarFilePath, true);
-      initClassNames();
-    } catch (Throwable ignored) {
-    }
-  }
+    private Set<String> classNames;
 
-  private JarFileReader(URL jarURL) {
-    try {
-      jarFile = ((JarURLConnection) jarURL.openConnection()).getJarFile();
-      initClassNames();
-    } catch (Throwable ignored) {
-    }
-  }
-
-  public static JarFileReader getInstance(String jarFilePath) {
-    return new JarFileReader(jarFilePath);
-  }
-
-  public static JarFileReader getInstance(URL jarURL) {
-    return new JarFileReader(jarURL);
-  }
-
-  public boolean isValid() {
-    return jarFile != null;
-  }
-
-  public Map<String, String> getManifestEntries() {
-    Map<String, String> manifestEntries = new HashMap<String, String>();
-    Manifest manifest;
-    try {
-      manifest = jarFile.getManifest();
-    } catch (IOException e) {
-      throw ReflectionException.getInstance("Failed to load Manifest-File for: " + jarFile.getName(), e);
+    private JarFileReader(String jarFilePath) {
+        try {
+            jarFile = new JarFile(jarFilePath, true);
+            initClassNames();
+        } catch (Throwable ignored) {
+        }
     }
 
-    Attributes mainAttributes = manifest.getMainAttributes();
-
-    for (Attributes.Entry entry : mainAttributes.entrySet()) {
-      String key = entry.getKey() == null ? "null" : entry.getKey().toString();
-      String value = entry.getValue() == null ? "null" : entry.getValue().toString();
-      manifestEntries.put(key, value);
-    }
-    return manifestEntries;
-  }
-
-  public String getManifestEntry(String name) {
-    return getManifestEntries().get(name);
-  }
-
-  private Set<String> getAllEntries() {
-    Set<String> entries = new HashSet<String>();
-
-    ArrayList<JarEntry> jarEntries = Collections.list(jarFile.entries());
-    for (JarEntry entry : jarEntries)
-      entries.add(entry.getName());
-
-    return entries;
-  }
-
-  public Set<Type> getTypesInPackage(String packageName) {
-    return Helper.loadClassesFromGivenPackage(classNames, packageName);
-  }
-
-  public Set<String> getSubPackagesOfPackage(String packageName) {
-    return Helper.getSubPackagesOfPackage(classNames, packageName);
-  }
-
-  private void initClassNames() {
-    classNames = new HashSet<String>();
-    for (String entry : getAllEntries()) {
-      if (isClass(entry))
-        classNames.add(getFQClassName(entry));
-    }
-    classNames = Collections.unmodifiableSet(classNames);
-  }
-
-  public Set<String> getClassNames() {
-    return classNames;
-  }
-
-  public static String getJarFileNameFromURLPath(String name) {
-    String fileName = "";
-
-    if (null != name && name.indexOf(Java.JAR_FILE_PATH_SEPARATOR) > 0) {
-      fileName = name.substring(0, name.indexOf(Java.JAR_FILE_PATH_SEPARATOR));
-      try {
-        URLToFileSystemAdapter urlToFileSystemAdapter = new URLToFileSystemAdapter(new URL(fileName));
-        fileName = urlToFileSystemAdapter.getAsFile().getAbsolutePath();
-      } catch (MalformedURLException ignored) {
-      }
+    private JarFileReader(URL jarURL) {
+        try {
+            jarFile = ((JarURLConnection) jarURL.openConnection()).getJarFile();
+            initClassNames();
+        } catch (Throwable ignored) {
+        }
     }
 
-    return fileName;
-  }
+    public static JarFileReader getInstance(String jarFilePath) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public static JarFileReader getInstance(URL jarURL) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isValid() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Map<String, String> getManifestEntries() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String getManifestEntry(String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private Set<String> getAllEntries() {
+        Set<String> entries = new HashSet<String>();
+        ArrayList<JarEntry> jarEntries = Collections.list(jarFile.entries());
+        for (JarEntry entry : jarEntries) entries.add(entry.getName());
+        return entries;
+    }
+
+    public Set<Type> getTypesInPackage(String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Set<String> getSubPackagesOfPackage(String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private void initClassNames() {
+        classNames = new HashSet<String>();
+        for (String entry : getAllEntries()) {
+            if (isClass(entry))
+                classNames.add(getFQClassName(entry));
+        }
+        classNames = Collections.unmodifiableSet(classNames);
+    }
+
+    public Set<String> getClassNames() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public static String getJarFileNameFromURLPath(String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

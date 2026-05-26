@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.util;
 
 import java.util.Collection;
-
 import com.openpojo.random.ParameterizableRandomGenerator;
 import com.openpojo.random.util.SerializableComparableObject;
 import com.openpojo.reflection.Parameterizable;
@@ -29,16 +27,15 @@ import com.openpojo.reflection.Parameterizable;
  */
 public abstract class BaseCollectionRandomGenerator implements ParameterizableRandomGenerator {
 
-  public Collection doGenerate(Class<?> type) {
-    return CollectionHelper.buildCollections(getBasicInstance(type), SerializableComparableObject.class);
-  }
+    public Collection doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection doGenerate(Parameterizable parameterizedType) {
-    return CollectionHelper.buildCollections(doGenerate(parameterizedType.getType()),
-        parameterizedType.getParameterTypes().get(0));
-  }
+    public Collection doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public abstract Collection<Class<?>> getTypes();
+    public abstract Collection<Class<?>> getTypes();
 
-  protected abstract Collection getBasicInstance(Class<?> type);
+    protected abstract Collection getBasicInstance(Class<?> type);
 }

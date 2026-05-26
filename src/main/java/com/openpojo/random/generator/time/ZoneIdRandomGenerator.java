@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.time;
 
 import java.lang.reflect.Method;
@@ -24,10 +23,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.reflection.java.load.ClassUtil;
-
 import static com.openpojo.random.generator.time.util.ReflectionHelper.getMethod;
 import static com.openpojo.random.generator.time.util.ReflectionHelper.invokeMethod;
 
@@ -35,39 +32,39 @@ import static com.openpojo.random.generator.time.util.ReflectionHelper.invokeMet
  * @author oshoukry
  */
 public class ZoneIdRandomGenerator implements RandomGenerator {
-  private static final String TYPE = "java.time.ZoneId";
-  private static final ZoneIdRandomGenerator INSTANCE = new ZoneIdRandomGenerator();
-  private static final Random RANDOM = new Random(System.currentTimeMillis());
-  private final Class<?> zoneIdClass;
 
-  public static ZoneIdRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final String TYPE = "java.time.ZoneId";
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> types = new ArrayList<Class<?>>();
-    if (zoneIdClass != null)
-      types.add(zoneIdClass);
-    return types;
-  }
+    private static final ZoneIdRandomGenerator INSTANCE = new ZoneIdRandomGenerator();
 
-  public Object doGenerate(Class<?> type) {
-    Object[] availableZoneIds = getAvailableZones();
-    return getZoneIdOf(availableZoneIds[RANDOM.nextInt(availableZoneIds.length)].toString());
-  }
+    private static final Random RANDOM = new Random(System.currentTimeMillis());
 
-  @SuppressWarnings("unchecked")
-  private Object[] getAvailableZones() {
-    Method getAvailableZoneIdsMethod = getMethod(zoneIdClass, "getAvailableZoneIds");
-    return ((Set<String>) invokeMethod(getAvailableZoneIdsMethod, null)).toArray();
-  }
+    private final Class<?> zoneIdClass;
 
-  private Object getZoneIdOf(String availableZone) {
-    Method ofMethod = getMethod(zoneIdClass, "of", String.class);
-    return invokeMethod(ofMethod, null, availableZone);
-  }
+    public static ZoneIdRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private ZoneIdRandomGenerator() {
-    zoneIdClass = ClassUtil.loadClass(TYPE);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @SuppressWarnings("unchecked")
+    private Object[] getAvailableZones() {
+        Method getAvailableZoneIdsMethod = getMethod(zoneIdClass, "getAvailableZoneIds");
+        return ((Set<String>) invokeMethod(getAvailableZoneIdsMethod, null)).toArray();
+    }
+
+    private Object getZoneIdOf(String availableZone) {
+        Method ofMethod = getMethod(zoneIdClass, "of", String.class);
+        return invokeMethod(ofMethod, null, availableZone);
+    }
+
+    private ZoneIdRandomGenerator() {
+        zoneIdClass = ClassUtil.loadClass(TYPE);
+    }
 }

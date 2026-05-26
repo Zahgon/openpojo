@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.impl;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoClassFilter;
 import com.openpojo.reflection.filters.FilterChain;
@@ -34,34 +32,29 @@ import com.openpojo.validation.utils.ValidationHelper;
  * @author oshoukry
  */
 public class DefaultValidator implements Validator {
-  private final List<Rule> rules = new LinkedList<Rule>();
-  private final List<Tester> testers = new LinkedList<Tester>();
 
-  public DefaultValidator(List<Rule> rules, List<Tester> testers) {
-    this.rules.addAll(rules);
-    this.testers.addAll(testers);
-  }
+    private final List<Rule> rules = new LinkedList<Rule>();
 
-  public void validate(PojoClass pojoClass) {
-    ValidationHelper.runValidation(pojoClass, this.rules, this.testers);
-  }
+    private final List<Tester> testers = new LinkedList<Tester>();
 
-  public void validate(List<PojoClass> pojoClasses) {
-    for (PojoClass pojoClass : pojoClasses)
-      validate(pojoClass);
-  }
+    public DefaultValidator(List<Rule> rules, List<Tester> testers) {
+        this.rules.addAll(rules);
+        this.testers.addAll(testers);
+    }
 
-  public List<PojoClass> validate(String packageName, PojoClassFilter... filters) {
-    PojoClassFilter pojoClassFilter = new FilterChain(filters);
-    List<PojoClass> pojoClasses = PojoClassFactory.getPojoClasses(packageName, pojoClassFilter);
-    validate(pojoClasses);
-    return pojoClasses;
-  }
+    public void validate(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public List<PojoClass> validateRecursively(String packageName, PojoClassFilter... filters) {
-    PojoClassFilter pojoClassFilter = new FilterChain(filters);
-    List<PojoClass> pojoClasses = PojoClassFactory.getPojoClassesRecursively(packageName, pojoClassFilter);
-    validate(pojoClasses);
-    return pojoClasses;
-  }
+    public void validate(List<PojoClass> pojoClasses) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public List<PojoClass> validate(String packageName, PojoClassFilter... filters) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public List<PojoClass> validateRecursively(String packageName, PojoClassFilter... filters) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

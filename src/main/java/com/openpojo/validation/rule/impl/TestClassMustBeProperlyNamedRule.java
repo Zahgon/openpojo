@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.rule.impl;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoMethod;
 import com.openpojo.reflection.java.load.ClassUtil;
@@ -44,100 +42,85 @@ import com.openpojo.validation.rule.Rule;
  */
 public class TestClassMustBeProperlyNamedRule implements Rule {
 
-  public static final String[] DEFAULT_PREFIX_TOKENS = { "Test" };
-  public static final String[] DEFAULT_SUFFIX_TOKENS = { "Test", "TestCase" };
-  public static final String[] DEFAULT_ANNOTATIONS = { "org.testng.annotations.Test", "org.junit.Test",
-      "org.junit.jupiter.api.Test" };
+    public static final String[] DEFAULT_PREFIX_TOKENS = { "Test" };
 
-  private final Collection<String> prefixes;
-  private final Collection<String> suffixes;
+    public static final String[] DEFAULT_SUFFIX_TOKENS = { "Test", "TestCase" };
 
-  private final Collection<Class<? extends Annotation>> loadedAnnotations = new ArrayList<Class<? extends Annotation>>();
+    public static final String[] DEFAULT_ANNOTATIONS = { "org.testng.annotations.Test", "org.junit.Test", "org.junit.jupiter.api.Test" };
 
-  /**
-   * This constructor used the default is prefix "Test", suffixes "Test" &amp; "TestCase".
-   */
-  public TestClassMustBeProperlyNamedRule() {
-    this(Arrays.asList(DEFAULT_PREFIX_TOKENS), Arrays.asList(DEFAULT_SUFFIX_TOKENS), Arrays.asList(DEFAULT_ANNOTATIONS));
-  }
+    private final Collection<String> prefixes;
 
-  /**
-   * This constructor enables you to override the prefix / postfixes for the test names.
-   * The default is prefix is Test, suffixes *Test or *TestCase
-   *
-   * @param prefixes
-   *     the prefix list to use.
-   * @param suffixes
-   *     the suffix list to use
-   * @param annotations
-   *     collection of annotations considered test markers (for example @Test in JUnit)
-   */
-  @SuppressWarnings("unchecked")
-  public TestClassMustBeProperlyNamedRule(Collection<String> prefixes,
-                                          Collection<String> suffixes,
-                                          Collection<String> annotations) {
-    this.prefixes = prefixes;
-    this.suffixes = suffixes;
-    for (String annotation : annotations) {
-      Class<? extends Annotation> annotationClass = (Class<? extends Annotation>) ClassUtil.loadClass(annotation);
-      if (annotationClass != null) {
-        loadedAnnotations.add(annotationClass);
-      }
+    private final Collection<String> suffixes;
+
+    private final Collection<Class<? extends Annotation>> loadedAnnotations = new ArrayList<Class<? extends Annotation>>();
+
+    /**
+     * This constructor used the default is prefix "Test", suffixes "Test" &amp; "TestCase".
+     */
+    public TestClassMustBeProperlyNamedRule() {
+        this(Arrays.asList(DEFAULT_PREFIX_TOKENS), Arrays.asList(DEFAULT_SUFFIX_TOKENS), Arrays.asList(DEFAULT_ANNOTATIONS));
     }
 
-    if (loadedAnnotations.size() == 0) {
-      ArrayList<String> namedAnnotations = new ArrayList<String>();
-      namedAnnotations.addAll(annotations);
-      throw new IllegalStateException("No annotations loaded, expected any of " + namedAnnotations);
-    }
-  }
-
-  @SuppressWarnings("unchecked")
-  public void evaluate(PojoClass pojoClass) {
-    if (!pojoClass.isConcrete() || properlyNamed(pojoClass))
-      return;
-
-    for (Class<? extends Annotation> annotation : loadedAnnotations) {
-      if (isAnnotatedOrParentAnnotated(pojoClass, annotation)) {
-        Affirm.fail("Test class [" + pojoClass.getName() + "] does not start with " + prefixes.toString() + " or ends with "
-            + suffixes.toString());
-      }
-    }
-  }
-
-  private boolean properlyNamed(PojoClass pojoClass) {
-    String simpleClassName = getClassName(pojoClass);
-
-    for (String token : prefixes) {
-      if (simpleClassName.startsWith(token))
-        return true;
-    }
-
-    for (String token : suffixes) {
-      if (simpleClassName.endsWith(token))
-        return true;
-    }
-    return false;
-  }
-
-  private String getClassName(PojoClass pojoClass) {
-    return pojoClass.getClazz().getSimpleName();
-  }
-
-  private boolean isAnnotatedOrParentAnnotated(PojoClass pojoClass, Class<? extends Annotation> testAnnotation) {
-    if (pojoClass == null)
-      return false;
-
-    //Class level annotation
-    if (pojoClass.getAnnotation(testAnnotation) != null)
-      return true;
-
-    for (PojoMethod pojoMethod : pojoClass.getPojoMethods()) {
-      if (pojoMethod.getAnnotation(testAnnotation) != null)
-        return true;
+    /**
+     * This constructor enables you to override the prefix / postfixes for the test names.
+     * The default is prefix is Test, suffixes *Test or *TestCase
+     *
+     * @param prefixes
+     *     the prefix list to use.
+     * @param suffixes
+     *     the suffix list to use
+     * @param annotations
+     *     collection of annotations considered test markers (for example @Test in JUnit)
+     */
+    @SuppressWarnings("unchecked")
+    public TestClassMustBeProperlyNamedRule(Collection<String> prefixes, Collection<String> suffixes, Collection<String> annotations) {
+        this.prefixes = prefixes;
+        this.suffixes = suffixes;
+        for (String annotation : annotations) {
+            Class<? extends Annotation> annotationClass = (Class<? extends Annotation>) ClassUtil.loadClass(annotation);
+            if (annotationClass != null) {
+                loadedAnnotations.add(annotationClass);
+            }
+        }
+        if (loadedAnnotations.size() == 0) {
+            ArrayList<String> namedAnnotations = new ArrayList<String>();
+            namedAnnotations.addAll(annotations);
+            throw new IllegalStateException("No annotations loaded, expected any of " + namedAnnotations);
+        }
     }
 
-    return (isAnnotatedOrParentAnnotated(pojoClass.getSuperClass(), testAnnotation));
-  }
+    @SuppressWarnings("unchecked")
+    public void evaluate(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    private boolean properlyNamed(PojoClass pojoClass) {
+        String simpleClassName = getClassName(pojoClass);
+        for (String token : prefixes) {
+            if (simpleClassName.startsWith(token))
+                return true;
+        }
+        for (String token : suffixes) {
+            if (simpleClassName.endsWith(token))
+                return true;
+        }
+        return false;
+    }
+
+    private String getClassName(PojoClass pojoClass) {
+        return pojoClass.getClazz().getSimpleName();
+    }
+
+    private boolean isAnnotatedOrParentAnnotated(PojoClass pojoClass, Class<? extends Annotation> testAnnotation) {
+        if (pojoClass == null)
+            return false;
+        //Class level annotation
+        if (pojoClass.getAnnotation(testAnnotation) != null)
+            return true;
+        for (PojoMethod pojoMethod : pojoClass.getPojoMethods()) {
+            if (pojoMethod.getAnnotation(testAnnotation) != null)
+                return true;
+        }
+        return (isAnnotatedOrParentAnnotated(pojoClass.getSuperClass(), testAnnotation));
+    }
 }

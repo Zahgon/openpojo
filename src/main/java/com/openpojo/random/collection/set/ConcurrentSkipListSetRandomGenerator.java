@@ -15,18 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 import com.openpojo.reflection.construct.InstanceFactory;
 import com.openpojo.reflection.java.load.ClassUtil;
-
 import static com.openpojo.reflection.impl.PojoClassFactory.getPojoClass;
 import static com.openpojo.reflection.java.load.ClassUtil.loadClass;
 
@@ -34,26 +31,24 @@ import static com.openpojo.reflection.java.load.ClassUtil.loadClass;
  * @author oshoukry
  */
 public class ConcurrentSkipListSetRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final String TYPE = "java.util.concurrent.ConcurrentSkipListSet";
-  private static final ConcurrentSkipListSetRandomGenerator INSTANCE = new ConcurrentSkipListSetRandomGenerator();
 
-  public static ConcurrentSkipListSetRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final String TYPE = "java.util.concurrent.ConcurrentSkipListSet";
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> types = new ArrayList<Class<?>>();
-    if (ClassUtil.isClassLoaded(TYPE))
-      types.add(loadClass(TYPE));
-    return types;
-  }
+    private static final ConcurrentSkipListSetRandomGenerator INSTANCE = new ConcurrentSkipListSetRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return (Collection) InstanceFactory.getInstance(getPojoClass(loadClass(TYPE)));
-  }
+    public static ConcurrentSkipListSetRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private ConcurrentSkipListSetRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private ConcurrentSkipListSetRandomGenerator() {
+    }
 }

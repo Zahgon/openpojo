@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.security;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.reflection.PojoClass;
@@ -33,27 +31,26 @@ import com.openpojo.reflection.java.load.ClassUtil;
  * @author oshoukry
  */
 public class KerberosTimeRandomGenerator implements RandomGenerator {
-  private static final String TYPE = "sun.security.krb5.internal.KerberosTime";
-  private final Class<?> kerberosTimeClass;
-  private static final KerberosTimeRandomGenerator INSTANCE = new KerberosTimeRandomGenerator();
 
-  private KerberosTimeRandomGenerator() {
-    kerberosTimeClass = ClassUtil.loadClass(TYPE);
-  }
+    private static final String TYPE = "sun.security.krb5.internal.KerberosTime";
 
-  public static RandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private final Class<?> kerberosTimeClass;
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> supported = new ArrayList<Class<?>>();
-    if (kerberosTimeClass != null)
-      supported.add(kerberosTimeClass);
-    return supported;
-  }
+    private static final KerberosTimeRandomGenerator INSTANCE = new KerberosTimeRandomGenerator();
 
-  public Object doGenerate(Class<?> type) {
-    PojoClass pojoClass = PojoClassFactory.getPojoClass(kerberosTimeClass);
-    return InstanceFactory.getInstance(pojoClass, RandomFactory.getRandomValue(long.class));
-  }
+    private KerberosTimeRandomGenerator() {
+        kerberosTimeClass = ClassUtil.loadClass(TYPE);
+    }
+
+    public static RandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

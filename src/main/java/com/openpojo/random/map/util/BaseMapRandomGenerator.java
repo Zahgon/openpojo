@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map.util;
 
 import java.util.Collection;
 import java.util.Map;
-
 import com.openpojo.random.ParameterizableRandomGenerator;
 import com.openpojo.reflection.Parameterizable;
 
@@ -29,17 +27,16 @@ import com.openpojo.reflection.Parameterizable;
  */
 public abstract class BaseMapRandomGenerator implements ParameterizableRandomGenerator {
 
-  @SuppressWarnings("unchecked")
-  public Map doGenerate(Class<?> type) {
-    return getBasicInstance(type);
-  }
+    @SuppressWarnings("unchecked")
+    public Map doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Map doGenerate(Parameterizable parameterizedType) {
-    return MapHelper.buildMap(doGenerate(parameterizedType.getType()), parameterizedType.getParameterTypes().get(0),
-        parameterizedType.getParameterTypes().get(1));
-  }
+    public Map doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public abstract Collection<Class<?>> getTypes();
+    public abstract Collection<Class<?>> getTypes();
 
-  protected abstract Map getBasicInstance(Class<?> type);
+    protected abstract Map getBasicInstance(Class<?> type);
 }

@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.filters;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoClassFilter;
 
@@ -30,47 +28,37 @@ import com.openpojo.reflection.PojoClassFilter;
  * @author oshoukry
  */
 public class FilterChain implements PojoClassFilter {
-  private final Set<PojoClassFilter> pojoClassFilters = new LinkedHashSet<PojoClassFilter>();
 
-  public FilterChain(final PojoClassFilter... pojoClassFilters) {
-    if (pojoClassFilters != null)
-      for (PojoClassFilter pojoClassFilter : pojoClassFilters) {
-        if (pojoClassFilter != null) {
-          this.pojoClassFilters.add(pojoClassFilter);
-        }
-      }
-  }
+    private final Set<PojoClassFilter> pojoClassFilters = new LinkedHashSet<PojoClassFilter>();
 
-  public boolean include(final PojoClass pojoClass) {
-    for (PojoClassFilter pojoClassFilter : pojoClassFilters) {
-      if (!pojoClassFilter.include(pojoClass))
-        return false;
+    public FilterChain(final PojoClassFilter... pojoClassFilters) {
+        if (pojoClassFilters != null)
+            for (PojoClassFilter pojoClassFilter : pojoClassFilters) {
+                if (pojoClassFilter != null) {
+                    this.pojoClassFilters.add(pojoClassFilter);
+                }
+            }
     }
-    return true;
-  }
 
-  public Collection<PojoClassFilter> getPojoClassFilters() {
-    return Collections.unmodifiableSet(pojoClassFilters);
-  }
+    public boolean include(final PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int size() {
-    return pojoClassFilters.size();
-  }
+    public Collection<PojoClassFilter> getPojoClassFilters() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    public int size() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    FilterChain that = (FilterChain) o;
+    @Override
+    public boolean equals(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return pojoClassFilters.equals(that.pojoClassFilters);
-  }
-
-  @Override
-  public int hashCode() {
-    return pojoClassFilters.hashCode();
-  }
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

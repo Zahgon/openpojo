@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.cache.impl;
 
 import com.openpojo.business.annotation.BusinessKey;
@@ -27,41 +26,43 @@ import com.openpojo.reflection.PojoField;
  */
 public class DefaultBusinessKeyField implements BusinessKeyField {
 
-  private final boolean isComposite;
-  private final boolean isCaseSensitive;
-  private final boolean isRequired;
-  private final PojoField pojoField;
+    private final boolean isComposite;
 
-  public DefaultBusinessKeyField(PojoField pojoField) {
-    this.pojoField = pojoField;
-    BusinessKey annotation = pojoField.getAnnotation(BusinessKey.class);
-    isComposite = annotation.composite();
-    isCaseSensitive = annotation.caseSensitive();
-    isRequired = annotation.required();
-  }
+    private final boolean isCaseSensitive;
 
-  public boolean isComposite() {
-    return isComposite;
-  }
+    private final boolean isRequired;
 
-  public boolean isCaseSensitive() {
-    return isCaseSensitive;
-  }
+    private final PojoField pojoField;
 
-  public boolean isRequired() {
-    return isRequired;
-  }
+    public DefaultBusinessKeyField(PojoField pojoField) {
+        this.pojoField = pojoField;
+        BusinessKey annotation = pojoField.getAnnotation(BusinessKey.class);
+        isComposite = annotation.composite();
+        isCaseSensitive = annotation.caseSensitive();
+        isRequired = annotation.required();
+    }
 
-  public Object get(Object instance) {
-    return pojoField.get(instance);
-  }
+    public boolean isComposite() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean isArray() {
-    return pojoField.isArray();
-  }
+    public boolean isCaseSensitive() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public String toString() {
-    return String.format("DefaultBusinessKeyField [isRequired=%s, isComposite=%s, isCaseSensitive=%s, pojoField=%s]",
-        isRequired, isComposite, isCaseSensitive, pojoField);
-  }
+    public boolean isRequired() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object get(Object instance) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isArray() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

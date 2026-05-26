@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.packageloader;
 
 import java.io.IOException;
@@ -24,7 +23,6 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
-
 import com.openpojo.business.BusinessIdentity;
 import com.openpojo.business.annotation.BusinessKey;
 import com.openpojo.log.Logger;
@@ -40,59 +38,42 @@ import com.openpojo.reflection.java.packageloader.impl.JARPackageLoader;
  */
 public abstract class PackageLoader {
 
-  protected final Logger logger;
+    protected final Logger logger;
 
-  @BusinessKey
-  protected final URL packageURL;
+    @BusinessKey
+    protected final URL packageURL;
 
-  @BusinessKey
-  protected final String packageName;
+    @BusinessKey
+    protected final String packageName;
 
-  public PackageLoader(final URL packageURL, final String packageName) {
-    this.packageURL = packageURL;
-    this.packageName = packageName;
-    logger = LoggerFactory.getLogger(this.getClass());
-  }
-
-  public abstract Set<Type> getTypes();
-
-  public abstract Set<String> getSubPackages();
-
-  public static Set<URL> getThreadResources(final String path) {
-    String normalizedPath = fromJDKPackageToJDKPath(path);
-    Enumeration<URL> urls;
-    try {
-      urls = getThreadClassLoader().getResources(normalizedPath);
-    } catch (IOException e) {
-      throw ReflectionException.getInstance(MessageFormatter.format("Failed to getThreadResources for path[{0}]", path), e);
+    public PackageLoader(final URL packageURL, final String packageName) {
+        this.packageURL = packageURL;
+        this.packageName = packageName;
+        logger = LoggerFactory.getLogger(this.getClass());
     }
-    Set<URL> returnURLs = new HashSet<URL>();
-    while (urls.hasMoreElements()) {
-      returnURLs.add(urls.nextElement());
+
+    public abstract Set<Type> getTypes();
+
+    public abstract Set<String> getSubPackages();
+
+    public static Set<URL> getThreadResources(final String path) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return returnURLs;
-  }
 
-  protected static PackageLoader getPackageLoaderByURL(final URL packageURL, final String packageName) {
-    if (packageURL.getProtocol().equalsIgnoreCase("jar")) {
-      return new JARPackageLoader(packageURL, packageName);
+    protected static PackageLoader getPackageLoaderByURL(final URL packageURL, final String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    if (packageURL.getProtocol().equalsIgnoreCase("file")) {
-      return new FilePackageLoader(packageURL, packageName);
+
+    private static ClassLoader getThreadClassLoader() {
+        return Thread.currentThread().getContextClassLoader();
     }
-    throw new IllegalArgumentException("Unknown package loader protocol: " + packageURL.getProtocol());
-  }
 
-  private static ClassLoader getThreadClassLoader() {
-    return Thread.currentThread().getContextClassLoader();
-  }
+    private static String fromJDKPackageToJDKPath(final String path) {
+        return path.replace(Java.PACKAGE_DELIMITER, Java.PATH_DELIMITER);
+    }
 
-  private static String fromJDKPackageToJDKPath(final String path) {
-    return path.replace(Java.PACKAGE_DELIMITER, Java.PATH_DELIMITER);
-  }
-
-  @Override
-  public String toString() {
-    return BusinessIdentity.toString(this);
-  }
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

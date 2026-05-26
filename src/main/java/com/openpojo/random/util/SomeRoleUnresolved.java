@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.util;
 
 import java.util.Collections;
@@ -24,7 +23,6 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.relation.RoleStatus;
 import javax.management.relation.RoleUnresolved;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.exception.RandomGeneratorException;
 
@@ -33,25 +31,24 @@ import com.openpojo.random.exception.RandomGeneratorException;
  */
 public class SomeRoleUnresolved extends RoleUnresolved {
 
-
-  public SomeRoleUnresolved() {
-    super(anyString(), anyRoleValue(), anyProblemRoleStatus());
-  }
-
-  protected static String anyString() {
-    return RandomFactory.getRandomValue(String.class);
-  }
-
-  @SuppressWarnings("ConstantConditions")
-  private static List<ObjectName> anyRoleValue() {
-    try {
-      return Collections.singletonList(new ObjectName("*:type=" + anyString() + ",name=" + anyString()));
-    } catch (MalformedObjectNameException e) {
-      throw RandomGeneratorException.getInstance("Failed to create Role", e);
+    public SomeRoleUnresolved() {
+        super(anyString(), anyRoleValue(), anyProblemRoleStatus());
     }
-  }
 
-  private static int anyProblemRoleStatus() {
-    return RoleStatus.NO_ROLE_WITH_NAME;
-  }
+    protected static String anyString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private static List<ObjectName> anyRoleValue() {
+        try {
+            return Collections.singletonList(new ObjectName("*:type=" + anyString() + ",name=" + anyString()));
+        } catch (MalformedObjectNameException e) {
+            throw RandomGeneratorException.getInstance("Failed to create Role", e);
+        }
+    }
+
+    private static int anyProblemRoleStatus() {
+        return RoleStatus.NO_ROLE_WITH_NAME;
+    }
 }

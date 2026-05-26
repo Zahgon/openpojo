@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.utils;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import com.openpojo.business.annotation.BusinessKey;
 import com.openpojo.business.cache.BusinessKeyField;
 import com.openpojo.business.cache.BusinessKeyFieldCache;
@@ -35,37 +33,21 @@ import com.openpojo.reflection.impl.PojoClassFactory;
  * @author oshoukry
  */
 public class BusinessPojoHelper {
-  private static BusinessKeyFieldCache cache = new BusinessKeyFieldCache();
 
-  /**
-   * Get all business keys declared on a class and the parent super classes.
-   *
-   * @param clazz
-   *     The class to introspect.
-   * @return The list of fields that are annotated with @BusinessKey, will return an empty list if none are found.
-   */
-  public static List<BusinessKeyField> getBusinessKeyFields(final Class<?> clazz) {
+    private static BusinessKeyFieldCache cache = new BusinessKeyFieldCache();
 
-    List<BusinessKeyField> businessKeyFields = cache.get(clazz.getName());
-    if (businessKeyFields != null) {
-      return businessKeyFields;
+    /**
+     * Get all business keys declared on a class and the parent super classes.
+     *
+     * @param clazz
+     *     The class to introspect.
+     * @return The list of fields that are annotated with @BusinessKey, will return an empty list if none are found.
+     */
+    public static List<BusinessKeyField> getBusinessKeyFields(final Class<?> clazz) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    businessKeyFields = new LinkedList<BusinessKeyField>();
-
-    PojoClass pojoClass = PojoClassFactory.getPojoClass(clazz);
-    while (pojoClass != null) {
-      for (PojoField pojoField : pojoClass.getPojoFieldsAnnotatedWith(BusinessKey.class)) {
-        businessKeyFields.add(new DefaultBusinessKeyField(pojoField));
-      }
-      pojoClass = pojoClass.getSuperClass();
+    private BusinessPojoHelper() {
+        throw new UnsupportedOperationException(BusinessPojoHelper.class.getName() + " should not be constructed!");
     }
-
-    cache.add(clazz.getName(), businessKeyFields);
-    return businessKeyFields;
-  }
-
-  private BusinessPojoHelper() {
-    throw new UnsupportedOperationException(BusinessPojoHelper.class.getName() +  " should not be constructed!");
-  }
 }

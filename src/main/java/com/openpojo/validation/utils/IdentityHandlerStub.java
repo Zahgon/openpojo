@@ -15,77 +15,76 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.openpojo.business.identity.IdentityHandler;
 
 /**
  * @author oshoukry
  */
 public class IdentityHandlerStub implements IdentityHandler {
-  private Boolean areEqualReturn;
-  private Integer hashCodeReturn;
 
-  private String toStringReturn;
+    private Boolean areEqualReturn;
 
-  private Object instance1;
+    private Integer hashCodeReturn;
 
-  private Object instance2;
-  private List<Object> instances = new ArrayList<Object>();
-  public IdentityHandlerStub(Object ... instances) {
-    if (instances != null)
-      for (Object instance : instances)
-      if (instance != null)
-        this.instances.add(instance);
-  }
+    private String toStringReturn;
 
-  public boolean handlerFor(final Object object) {
-    for (Object instance : instances)
-      if (object == instance)
-        return true;
-    return false;
-  }
+    private Object instance1;
 
-  public void validate(final Object object) {
-  }
+    private Object instance2;
 
-  public void setAreEqualReturn(final Boolean areEqualReturn) {
-    this.areEqualReturn = areEqualReturn;
-  }
+    private List<Object> instances = new ArrayList<Object>();
 
-  public Boolean getAreEqualReturn() {
-    return areEqualReturn;
-  }
+    public IdentityHandlerStub(Object... instances) {
+        if (instances != null)
+            for (Object instance : instances) if (instance != null)
+                this.instances.add(instance);
+    }
 
-  public boolean areEqual(final Object first, final Object second) {
-    return areEqualReturn;
-  }
+    public boolean handlerFor(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setHashCodeReturn(final Integer hashCodeReturn) {
-    this.hashCodeReturn = hashCodeReturn;
-  }
+    public void validate(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Integer getHashCodeReturn() {
-    return hashCodeReturn;
-  }
+    public void setAreEqualReturn(final Boolean areEqualReturn) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int generateHashCode(final Object object) {
-    return hashCodeReturn;
-  }
+    public Boolean getAreEqualReturn() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setToStringReturn(String toStringReturn) {
-    this.toStringReturn = toStringReturn;
-  }
+    public boolean areEqual(final Object first, final Object second) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public String getToStringReturn() {
-    return toStringReturn;
-  }
+    public void setHashCodeReturn(final Integer hashCodeReturn) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public String toString(final Object object) {
-    return toStringReturn;
-  }
+    public Integer getHashCodeReturn() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public int generateHashCode(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void setToStringReturn(String toStringReturn) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String getToStringReturn() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String toString(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.type;
 
 import java.util.HashMap;
@@ -25,29 +24,29 @@ import java.util.Map;
  * @author oshoukry
  */
 public class Primitives {
-  private Map<Class<?>, Class<?>> primitivesToWrappers = new HashMap<Class<?>, Class<?>>(9);
-  private static final Primitives INSTANCE = new Primitives();
 
-  public static Primitives getInstance() {
-    return INSTANCE;
-  }
+    private Map<Class<?>, Class<?>> primitivesToWrappers = new HashMap<Class<?>, Class<?>>(9);
 
-  private Primitives() {
-    primitivesToWrappers.put(Boolean.TYPE, Boolean.class);
-    primitivesToWrappers.put(Byte.TYPE, Byte.class);
-    primitivesToWrappers.put(Character.TYPE, Character.class);
-    primitivesToWrappers.put(Double.TYPE, Double.class);
-    primitivesToWrappers.put(Float.TYPE, Float.class);
-    primitivesToWrappers.put(Integer.TYPE, Integer.class);
-    primitivesToWrappers.put(Long.TYPE, Long.class);
-    primitivesToWrappers.put(Short.TYPE, Short.class);
-    primitivesToWrappers.put(Void.TYPE, Void.class);
-  }
+    private static final Primitives INSTANCE = new Primitives();
 
-  @SuppressWarnings("unchecked")
-  public <T> Class<T> autoBox(Class<T> primitive) {
-    if (primitive == null || !primitive.isPrimitive())
-      return primitive;
-    return (Class<T>) primitivesToWrappers.get(primitive);
-  }
+    public static Primitives getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private Primitives() {
+        primitivesToWrappers.put(Boolean.TYPE, Boolean.class);
+        primitivesToWrappers.put(Byte.TYPE, Byte.class);
+        primitivesToWrappers.put(Character.TYPE, Character.class);
+        primitivesToWrappers.put(Double.TYPE, Double.class);
+        primitivesToWrappers.put(Float.TYPE, Float.class);
+        primitivesToWrappers.put(Integer.TYPE, Integer.class);
+        primitivesToWrappers.put(Long.TYPE, Long.class);
+        primitivesToWrappers.put(Short.TYPE, Short.class);
+        primitivesToWrappers.put(Void.TYPE, Void.class);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> Class<T> autoBox(Class<T> primitive) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.IdentityHashMap;
 import java.util.Map;
-
 import com.openpojo.random.map.util.BaseMapRandomGenerator;
 import com.openpojo.random.map.util.MapHelper;
 import com.openpojo.random.util.Helper;
@@ -32,24 +30,24 @@ import com.openpojo.random.util.SerializableComparableObject;
  * @author oshoukry
  */
 public class IdentityHashMapRandomGenerator extends BaseMapRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { IdentityHashMap.class };
-  private static final IdentityHashMapRandomGenerator INSTANCE = new IdentityHashMapRandomGenerator();
 
-  public static IdentityHashMapRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { IdentityHashMap.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final IdentityHashMapRandomGenerator INSTANCE = new IdentityHashMapRandomGenerator();
 
-  @Override
-  protected Map getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return MapHelper.buildMap(new IdentityHashMap(), SerializableComparableObject.class, SerializableComparableObject.class);
-  }
+    public static IdentityHashMapRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private IdentityHashMapRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    @Override
+    protected Map getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private IdentityHashMapRandomGenerator() {
+    }
 }

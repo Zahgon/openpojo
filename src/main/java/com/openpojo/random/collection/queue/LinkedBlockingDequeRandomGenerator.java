@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.queue;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.collection.util.CollectionHelper;
 import com.openpojo.random.util.Helper;
@@ -33,27 +31,24 @@ import com.openpojo.reflection.java.load.ClassUtil;
  * @author oshoukry
  */
 public class LinkedBlockingDequeRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final String TYPE = "java.util.concurrent.LinkedBlockingDeque";
-  private static final LinkedBlockingDequeRandomGenerator INSTANCE = new LinkedBlockingDequeRandomGenerator();
 
-  public static LinkedBlockingDequeRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final String TYPE = "java.util.concurrent.LinkedBlockingDeque";
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> types = new ArrayList<Class<?>>();
-    if (ClassUtil.isClassLoaded(TYPE))
-      types.add(ClassUtil.loadClass(TYPE));
-    return types;
-  }
+    private static final LinkedBlockingDequeRandomGenerator INSTANCE = new LinkedBlockingDequeRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return (Collection) InstanceFactory.getInstance(PojoClassFactory.getPojoClass(ClassUtil.loadClass(TYPE)), CollectionHelper
-        .MAX_RANDOM_ELEMENTS);
-  }
+    public static LinkedBlockingDequeRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private LinkedBlockingDequeRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private LinkedBlockingDequeRandomGenerator() {
+    }
 }

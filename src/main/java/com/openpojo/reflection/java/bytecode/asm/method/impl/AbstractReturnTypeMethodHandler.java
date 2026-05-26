@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm.method.impl;
 
 import com.openpojo.reflection.java.bytecode.asm.method.MethodHandler;
 import org.objectweb.asm.MethodVisitor;
-
 import static org.objectweb.asm.Opcodes.*;
 
 /**
@@ -28,38 +26,15 @@ import static org.objectweb.asm.Opcodes.*;
  */
 abstract class AbstractReturnTypeMethodHandler implements MethodHandler {
 
-  public void generateMethod(MethodVisitor methodVisitor,
-                             String abstractClassName,
-                             String generatedClassName,
-                             int access,
-                             String name,
-                             String desc,
-                             String signature,
-                             String[] exceptions) {
-    methodVisitor.visitFieldInsn(GETSTATIC, getInternalName(), "TYPE", "Ljava/lang/Class;");
+    public void generateMethod(MethodVisitor methodVisitor, String abstractClassName, String generatedClassName, int access, String name, String desc, String signature, String[] exceptions) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    methodVisitor.visitMethodInsn(INVOKESTATIC,
-        "com/openpojo/random/RandomFactory",
-        "getRandomValue",
-        "(Ljava/lang/Class;)Ljava/lang/Object;",
-        false);
+    protected abstract String getInternalName();
 
-    methodVisitor.visitTypeInsn(CHECKCAST, getInternalName());
-    methodVisitor.visitMethodInsn(INVOKEVIRTUAL,
-        getInternalName(),
-        getAsPrimitiveMethod(),
-        getReturnDescription(),
-        false);
-    methodVisitor.visitInsn(getOpCode());
-    methodVisitor.visitMaxs(0, 0);
-    methodVisitor.visitEnd();
-  }
+    protected abstract String getAsPrimitiveMethod();
 
-  protected abstract String getInternalName();
+    protected abstract String getReturnDescription();
 
-  protected abstract String getAsPrimitiveMethod();
-
-  protected abstract String getReturnDescription();
-
-  protected abstract int getOpCode();
+    protected abstract int getOpCode();
 }

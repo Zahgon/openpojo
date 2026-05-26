@@ -15,38 +15,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.UUID;
-
 import com.openpojo.random.RandomGenerator;
 
 /**
  * @author oshoukry
  */
 public class UUIDRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { UUID.class };
 
-  private UUIDRandomGenerator() {
+    private static final Class<?>[] TYPES = new Class<?>[] { UUID.class };
 
-  }
+    private UUIDRandomGenerator() {
+    }
 
-  public static UUIDRandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    public static UUIDRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Object doGenerate(Class<?> type) {
-    return UUID.randomUUID();
-  }
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final UUIDRandomGenerator INSTANCE = new UUIDRandomGenerator();
-  }
+    private static class Instance {
+
+        private static final UUIDRandomGenerator INSTANCE = new UUIDRandomGenerator();
+    }
 }

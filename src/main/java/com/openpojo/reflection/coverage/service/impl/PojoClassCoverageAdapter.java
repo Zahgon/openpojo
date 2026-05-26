@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.service.impl;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.adapt.PojoClassAdapter;
 
@@ -28,18 +26,14 @@ import com.openpojo.reflection.adapt.PojoClassAdapter;
  * @author oshoukry
  */
 public class PojoClassCoverageAdapter implements PojoClassAdapter {
-  private Set<PojoClassAdapter> adapters = new HashSet<PojoClassAdapter>();
 
-  public void add(PojoClassAdapter pojoClassAdapter) {
-    if (pojoClassAdapter != null) {
-      adapters.add(pojoClassAdapter);
+    private Set<PojoClassAdapter> adapters = new HashSet<PojoClassAdapter>();
+
+    public void add(PojoClassAdapter pojoClassAdapter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  public PojoClass adapt(PojoClass pojoClass) {
-    PojoClass adaptedPojoClass = pojoClass;
-    for (PojoClassAdapter adapter : adapters)
-      adaptedPojoClass = adapter.adapt(adaptedPojoClass);
-    return adaptedPojoClass;
-  }
+    public PojoClass adapt(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

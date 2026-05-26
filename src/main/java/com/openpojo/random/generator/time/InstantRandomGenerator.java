@@ -15,18 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.time;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.reflection.java.load.ClassUtil;
-
 import static com.openpojo.random.generator.time.util.ReflectionHelper.getMethod;
 import static com.openpojo.random.generator.time.util.ReflectionHelper.invokeMethod;
 
@@ -34,29 +31,26 @@ import static com.openpojo.random.generator.time.util.ReflectionHelper.invokeMet
  * @author oshoukry
  */
 public class InstantRandomGenerator implements RandomGenerator {
-  private static final String TYPE = "java.time.Instant";
-  private static final InstantRandomGenerator INSTANCE = new InstantRandomGenerator();
-  private Class<?> instantClass;
 
-  public static InstantRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final String TYPE = "java.time.Instant";
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> types = new ArrayList<Class<?>>();
-    if (instantClass != null)
-      types.add(instantClass);
-    return types;
-  }
+    private static final InstantRandomGenerator INSTANCE = new InstantRandomGenerator();
 
-  public Object doGenerate(Class<?> type) {
-    Object zonedDateTime = RandomFactory.getRandomValue(ClassUtil.loadClass("java.time.ZonedDateTime"));
+    private Class<?> instantClass;
 
-    Method toInstant = getMethod(zonedDateTime.getClass(), "toInstant");
-    return invokeMethod(toInstant, zonedDateTime);
-  }
+    public static InstantRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private InstantRandomGenerator() {
-    instantClass = ClassUtil.loadClass(TYPE);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private InstantRandomGenerator() {
+        instantClass = ClassUtil.loadClass(TYPE);
+    }
 }

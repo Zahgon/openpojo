@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.queue;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.DelayQueue;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.collection.util.CollectionHelper;
 import com.openpojo.random.util.ComparableDelayed;
@@ -32,32 +30,32 @@ import com.openpojo.reflection.Parameterizable;
  * @author oshoukry
  */
 public class DelayQueueRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { DelayQueue.class };
-  private static final DelayQueueRandomGenerator INSTANCE = new DelayQueueRandomGenerator();
 
-  public static DelayQueueRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { DelayQueue.class };
 
-  public Collection doGenerate(Class<?> type) {
-    return CollectionHelper.buildCollections(getBasicInstance(type), ComparableDelayed.class);
-  }
+    private static final DelayQueueRandomGenerator INSTANCE = new DelayQueueRandomGenerator();
 
-  public Collection doGenerate(Parameterizable parameterizedType) {
-    return CollectionHelper.buildCollections(getBasicInstance(parameterizedType.getType()),
-        parameterizedType.getParameterTypes().get(0));
-  }
+    public static DelayQueueRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Collection doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new DelayQueue();
-  }
+    public Collection doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private DelayQueueRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private DelayQueueRandomGenerator() {
+    }
 }

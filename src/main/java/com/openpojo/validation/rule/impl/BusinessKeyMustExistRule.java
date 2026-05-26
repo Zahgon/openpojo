@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.rule.impl;
 
 import com.openpojo.business.cache.BusinessKeyField;
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.validation.affirm.Affirm;
 import com.openpojo.validation.rule.Rule;
-
 import static com.openpojo.business.utils.BusinessPojoHelper.getBusinessKeyFields;
 
 /**
@@ -33,13 +31,7 @@ import static com.openpojo.business.utils.BusinessPojoHelper.getBusinessKeyField
  */
 public class BusinessKeyMustExistRule implements Rule {
 
-  public void evaluate(final PojoClass pojoClass) {
-    for (BusinessKeyField businessField : getBusinessKeyFields(pojoClass.getClazz())) {
-      if (businessField.isRequired() || businessField.isComposite()) {
-        return;
-      }
+    public void evaluate(final PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
-    Affirm.fail(String.format("[%s] doesn't declare any 'required' BusinessKeys!!", pojoClass.getClazz()));
-  }
 }

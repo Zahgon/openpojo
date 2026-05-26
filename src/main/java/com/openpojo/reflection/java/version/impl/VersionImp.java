@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.version.impl;
 
 import java.util.List;
-
 import com.openpojo.reflection.java.version.Version;
 import com.openpojo.reflection.java.version.VersionParser;
 
@@ -28,50 +26,25 @@ import com.openpojo.reflection.java.version.VersionParser;
  */
 public class VersionImp implements Version {
 
-  private final String version;
-  private final List<Integer> parts;
+    private final String version;
 
-  public VersionImp(String version) {
-    this.version = version;
-    parts = VersionParser.getVersionParts(version);
-  }
+    private final List<Integer> parts;
 
-  public String getVersion() {
-    return version;
-  }
+    public VersionImp(String version) {
+        this.version = version;
+        parts = VersionParser.getVersionParts(version);
+    }
 
-  @SuppressWarnings("ReturnOfNull")
-  public Integer getPart(int idx) {
-    if (idx < 0 || idx >= parts.size())
-      return null;
-    return parts.get(idx);
-  }
+    public String getVersion() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int compareTo(Version right) {
-    int idx = 0;
-    Integer leftPart;
-    Integer rightPart;
+    @SuppressWarnings("ReturnOfNull")
+    public Integer getPart(int idx) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    do {
-      leftPart = this.getPart(idx);
-      rightPart = right.getPart(idx);
-      idx++;
-
-      if (leftPart == null && rightPart == null)
-        return 0;
-
-      if (leftPart == null)
-        return -1;
-
-      if (rightPart == null)
-        return 1;
-
-      if (leftPart < rightPart)
-        return -1;
-
-      if (leftPart > rightPart)
-        return 1;
-
-    } while (true);
-  }
+    public int compareTo(Version right) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

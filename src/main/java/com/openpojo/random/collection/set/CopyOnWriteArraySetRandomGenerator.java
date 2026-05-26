@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArraySet;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -29,23 +27,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class CopyOnWriteArraySetRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { CopyOnWriteArraySet.class };
-  private static final CopyOnWriteArraySetRandomGenerator INSTANCE = new CopyOnWriteArraySetRandomGenerator();
 
-  public static CopyOnWriteArraySetRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { CopyOnWriteArraySet.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final CopyOnWriteArraySetRandomGenerator INSTANCE = new CopyOnWriteArraySetRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new CopyOnWriteArraySet();
-  }
+    public static CopyOnWriteArraySetRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private CopyOnWriteArraySetRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private CopyOnWriteArraySetRandomGenerator() {
+    }
 }

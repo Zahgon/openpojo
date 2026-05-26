@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.impl;
 
 import com.openpojo.reflection.PojoClassFilter;
@@ -28,15 +27,15 @@ import com.openpojo.reflection.java.load.ClassUtil;
  */
 public abstract class AbstractCoverageDetector implements CoverageDetector {
 
-  public abstract String getName();
+    public abstract String getName();
 
-  public abstract String getCoverageClassName();
+    public abstract String getCoverageClassName();
 
-  public abstract PojoClassFilter getPojoClassFilter();
+    public abstract PojoClassFilter getPojoClassFilter();
 
-  public abstract PojoClassAdapter getPojoClassAdapter();
+    public abstract PojoClassAdapter getPojoClassAdapter();
 
-  public boolean isLoaded() {
-    return ClassUtil.isClassLoaded(getCoverageClassName());
-  }
+    public boolean isLoaded() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

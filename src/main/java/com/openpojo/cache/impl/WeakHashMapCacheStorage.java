@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.cache.impl;
 
 import java.util.Map;
 import java.util.WeakHashMap;
-
 import com.openpojo.cache.CacheStorage;
 
 /**
@@ -31,20 +29,18 @@ import com.openpojo.cache.CacheStorage;
  */
 public class WeakHashMapCacheStorage<T> implements CacheStorage<T> {
 
-  private final Map<String, T> repository = new WeakHashMap<String, T>();
+    private final Map<String, T> repository = new WeakHashMap<String, T>();
 
-  public void clear() {
-    repository.clear();
-  }
+    public void clear() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @SuppressWarnings("RedundantStringConstructorCall")
-  public void add(String name, T value) {
-    // Ensure that we don't have a "Strong" reference to the key in the map, otherwise no cleanup will occur.
-    repository.put(new String(name), value);
-  }
+    @SuppressWarnings("RedundantStringConstructorCall")
+    public void add(String name, T value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public T get(String name) {
-    return repository.get(name);
-  }
-
+    public T get(String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,41 +15,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.dynamic;
 
 import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.Random;
-
 import com.openpojo.random.RandomFactory;
 
 /**
  * @author oshoukry
  */
 public class ArrayRandomGenerator {
-  private static final Random RANDOM = new Random(new Date().getTime());
-  private static final int MAX_RANDOM_ELEMENTS = 5;
 
-  private ArrayRandomGenerator() {
-  }
+    private static final Random RANDOM = new Random(new Date().getTime());
 
-  public static ArrayRandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    private static final int MAX_RANDOM_ELEMENTS = 5;
 
-  public Object doGenerate(final Class<?> type) {
-    final int count = RANDOM.nextInt(MAX_RANDOM_ELEMENTS) + 1;
-    final Object arrayReturn = Array.newInstance(type.getComponentType(), count);
-    for (int i = 0; i < count; i++) {
-      Array.set(arrayReturn, i, RandomFactory.getRandomValue(type.getComponentType()));
+    private ArrayRandomGenerator() {
     }
 
-    return arrayReturn;
-  }
+    public static ArrayRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final ArrayRandomGenerator INSTANCE = new ArrayRandomGenerator();
-  }
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    private static class Instance {
+
+        private static final ArrayRandomGenerator INSTANCE = new ArrayRandomGenerator();
+    }
 }

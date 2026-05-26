@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
 import com.openpojo.random.map.util.BaseMapRandomGenerator;
 import com.openpojo.random.map.util.MapHelper;
 import com.openpojo.random.util.Helper;
@@ -32,24 +30,24 @@ import com.openpojo.random.util.SerializableComparableObject;
  * @author oshoukry
  */
 public class ConcurrentHashMapRandomGenerator extends BaseMapRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { ConcurrentHashMap.class };
-  private static final ConcurrentHashMapRandomGenerator INSTANCE = new ConcurrentHashMapRandomGenerator();
 
-  public static ConcurrentHashMapRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { ConcurrentHashMap.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final ConcurrentHashMapRandomGenerator INSTANCE = new ConcurrentHashMapRandomGenerator();
 
-  @Override
-  protected Map getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return MapHelper.buildMap(new ConcurrentHashMap(), SerializableComparableObject.class, SerializableComparableObject.class);
-  }
+    public static ConcurrentHashMapRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private ConcurrentHashMapRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    @Override
+    protected Map getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private ConcurrentHashMapRandomGenerator() {
+    }
 }

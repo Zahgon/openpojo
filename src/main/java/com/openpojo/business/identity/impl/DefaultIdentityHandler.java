@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.identity.impl;
 
 import com.openpojo.business.identity.IdentityHandler;
@@ -24,32 +23,33 @@ import com.openpojo.business.identity.IdentityHandler;
  * @author oshoukry
  */
 public final class DefaultIdentityHandler implements IdentityHandler {
-  private static final IdentityHandler INSTANCE = new DefaultIdentityHandler();
 
-  private DefaultIdentityHandler() {
-  }
+    private static final IdentityHandler INSTANCE = new DefaultIdentityHandler();
 
-  public static IdentityHandler getInstance() {
-    return INSTANCE;
-  }
+    private DefaultIdentityHandler() {
+    }
 
-  public boolean areEqual(final Object first, final Object second) {
-    return DefaultIdentityEvaluator.getInstance().areEqual(first, second);
-  }
+    public static IdentityHandler getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int generateHashCode(final Object object) {
-    return DefaultHashCodeGenerator.getInstance().doGenerate(object);
-  }
+    public boolean areEqual(final Object first, final Object second) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public String toString(Object object) {
-    return DefaultStringanizer.getInstance().toString(object);
-  }
+    public int generateHashCode(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void validate(final Object object) {
-    DefaultBusinessValidator.getInstance().validate(object);
-  }
+    public String toString(Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean handlerFor(final Object object) {
-    return true;
-  }
+    public void validate(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean handlerFor(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

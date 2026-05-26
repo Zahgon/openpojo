@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.identity.impl;
 
 import com.openpojo.business.annotation.BusinessKey;
@@ -33,43 +32,17 @@ import com.openpojo.business.utils.BusinessPojoHelper;
  * @author oshoukry
  */
 class DefaultBusinessValidator implements BusinessValidator {
-  private static final BusinessValidator INSTANCE = new DefaultBusinessValidator();
 
-  private DefaultBusinessValidator() {
-  }
+    private static final BusinessValidator INSTANCE = new DefaultBusinessValidator();
 
-  public static BusinessValidator getInstance() {
-    return INSTANCE;
-  }
-
-  public void validate(final Object object) {
-    if (object == null) {
-      return;
+    private DefaultBusinessValidator() {
     }
 
-    boolean compositeGroupPassed = false;
-    boolean hasCompositeGroup = false;
-    boolean hasBusinessKey = false;
-    for (BusinessKeyField businessKeyField : BusinessPojoHelper.getBusinessKeyFields(object.getClass())) {
-      hasBusinessKey = true;
-      if (businessKeyField.isComposite()) {
-        if (businessKeyField.get(object) != null) {
-          compositeGroupPassed = true;
-        }
-        hasCompositeGroup = true;
-      } else {
-        if (businessKeyField.isRequired() && businessKeyField.get(object) == null) {
-          throw BusinessException.getInstance((String.format("Field required and can't be null [%s]", businessKeyField)));
-        }
-      }
-    }
-    if (!hasBusinessKey) {
-      throw BusinessException.getInstance(String.format("No business Keys defined on class=[%s]", object.getClass()));
+    public static BusinessValidator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    if (!compositeGroupPassed && hasCompositeGroup) {
-      throw BusinessException.getInstance(String.format("Non of the fields in the composite group were populated [%s]",
-          object.getClass()));
+    public void validate(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 }

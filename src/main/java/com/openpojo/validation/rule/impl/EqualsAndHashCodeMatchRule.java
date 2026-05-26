@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.rule.impl;
 
 import com.openpojo.reflection.PojoClass;
@@ -32,30 +31,19 @@ import com.openpojo.validation.rule.Rule;
 @SuppressWarnings("WeakerAccess")
 public class EqualsAndHashCodeMatchRule implements Rule {
 
-  public void evaluate(PojoClass pojoClass) {
+    public void evaluate(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    boolean hasEquals = hasEquals(pojoClass);
-    boolean hasHashCode = hasHashCode(pojoClass);
+    private boolean hasHashCode(PojoClass pojoClass) {
+        for (PojoMethod method : pojoClass.getPojoMethods()) if (method.getName().equals("hashCode") && method.getPojoParameters().size() == 0)
+            return true;
+        return false;
+    }
 
-    if (hasEquals && !hasHashCode)
-      Affirm.fail("equals implemented but hashcode isn't in Pojo [" + pojoClass + "]");
-
-    if (!hasEquals && hasHashCode)
-      Affirm.fail("hashCode implemented but equals isn't in Pojo [" + pojoClass + "]");
-  }
-
-  private boolean hasHashCode(PojoClass pojoClass) {
-    for (PojoMethod method : pojoClass.getPojoMethods())
-      if (method.getName().equals("hashCode") && method.getPojoParameters().size() == 0)
-        return true;
-    return false;
-  }
-
-  private boolean hasEquals(PojoClass pojoClass) {
-    for (PojoMethod method : pojoClass.getPojoMethods())
-      if (method.getName().equals("equals") && method.getPojoParameters().size() == 1)
-        return true;
-    return false;
-  }
-
+    private boolean hasEquals(PojoClass pojoClass) {
+        for (PojoMethod method : pojoClass.getPojoMethods()) if (method.getName().equals("equals") && method.getPojoParameters().size() == 1)
+            return true;
+        return false;
+    }
 }

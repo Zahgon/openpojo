@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.rule.impl;
 
 import com.openpojo.reflection.PojoClass;
@@ -32,12 +31,8 @@ import com.openpojo.validation.utils.ValidationHelper;
  * @author oshoukry
  */
 public final class NoPublicFieldsExceptStaticFinalRule implements Rule {
-  public void evaluate(final PojoClass pojoClass) {
-    for (PojoField fieldEntry : pojoClass.getPojoFields()) {
-      if (fieldEntry.isPublic() && !ValidationHelper.isStaticFinal(fieldEntry)) {
-        Affirm.fail(String.format("Non 'static final' Public fields=[%s] not allowed", fieldEntry));
-      }
-    }
-  }
 
+    public void evaluate(final PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

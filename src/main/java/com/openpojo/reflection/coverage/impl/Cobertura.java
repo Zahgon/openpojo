@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.impl;
 
 import com.openpojo.reflection.PojoClassFilter;
@@ -26,32 +25,33 @@ import com.openpojo.reflection.adapt.impl.CoberturaPojoClassAdapter;
  * @author oshoukry
  */
 public class Cobertura extends AbstractCoverageDetector {
-  private static final Cobertura INSTANCE = new Cobertura();
 
-  private Cobertura() {
-  }
+    private static final Cobertura INSTANCE = new Cobertura();
 
-  public static Cobertura getInstance() {
-    return INSTANCE;
-  }
+    private Cobertura() {
+    }
 
-  @Override
-  public String getName() {
-    return "Cobertura";
-  }
+    public static Cobertura getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String getCoverageClassName() {
-    return "net.sourceforge.cobertura.coveragedata.LightClassmapListener";
-  }
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public PojoClassFilter getPojoClassFilter() {
-    return null;
-  }
+    @Override
+    public String getCoverageClassName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public PojoClassAdapter getPojoClassAdapter() {
-    return CoberturaPojoClassAdapter.getInstance();
-  }
+    @Override
+    public PojoClassFilter getPojoClassFilter() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public PojoClassAdapter getPojoClassAdapter() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

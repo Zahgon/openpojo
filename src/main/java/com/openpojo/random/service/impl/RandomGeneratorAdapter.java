@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.service.impl;
 
 import java.util.Collection;
-
 import com.openpojo.log.Logger;
 import com.openpojo.log.LoggerFactory;
 import com.openpojo.log.utils.MessageFormatter;
@@ -33,31 +31,30 @@ import com.openpojo.reflection.Parameterizable;
  */
 public final class RandomGeneratorAdapter implements RandomGenerator, ParameterizableRandomGenerator {
 
-  private final Class<?> fromType;
-  private final Class<?> toType;
-  private final RandomGenerator adaptedRandomGenerator;
-  private final static Logger LOGGER = LoggerFactory.getLogger(RandomGeneratorAdapter.class);
+    private final Class<?> fromType;
 
-  public RandomGeneratorAdapter(final Class<?> fromType, final Class<?> toType, final RandomGenerator adaptedRandomGenerator) {
-    this.fromType = fromType;
-    this.toType = toType;
-    this.adaptedRandomGenerator = adaptedRandomGenerator;
-    LOGGER.debug("Mapping [{0}] to [{1}] for generator [{2}]", fromType, toType, adaptedRandomGenerator);
-  }
+    private final Class<?> toType;
 
-  public Collection<Class<?>> getTypes() {
-    throw RandomGeneratorException.getInstance(MessageFormatter.format("Illegal use of RandomGeneratorAdapter([{0}] to [{1}]",
-        fromType, toType));
-  }
+    private final RandomGenerator adaptedRandomGenerator;
 
-  public Object doGenerate(final Class<?> type) {
-    if (type == fromType) {
-      return adaptedRandomGenerator.doGenerate(toType);
+    private final static Logger LOGGER = LoggerFactory.getLogger(RandomGeneratorAdapter.class);
+
+    public RandomGeneratorAdapter(final Class<?> fromType, final Class<?> toType, final RandomGenerator adaptedRandomGenerator) {
+        this.fromType = fromType;
+        this.toType = toType;
+        this.adaptedRandomGenerator = adaptedRandomGenerator;
+        LOGGER.debug("Mapping [{0}] to [{1}] for generator [{2}]", fromType, toType, adaptedRandomGenerator);
     }
-    throw RandomGeneratorException.getInstance(MessageFormatter.format("Unsupported type requested [{0}]", type));
-  }
 
-  public Object doGenerate(Parameterizable parameterizedType) {
-    return ((ParameterizableRandomGenerator) adaptedRandomGenerator).doGenerate(parameterizedType);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

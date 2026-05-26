@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.impl;
 
 import java.lang.annotation.Annotation;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import com.openpojo.reflection.PojoParameter;
 import com.openpojo.reflection.java.type.Resolver;
 
@@ -34,50 +32,45 @@ import com.openpojo.reflection.java.type.Resolver;
  */
 public class PojoParameterImpl implements PojoParameter {
 
-  private final Type type;
-  private final List<? extends Annotation> annotations;
+    private final Type type;
 
-  public PojoParameterImpl(Type type, Annotation[] annotations) {
-    this.type = type;
-    List<Annotation> tmpAnnotations = new ArrayList<Annotation>();
-    if (annotations != null) {
-      for (Annotation entry : annotations) {
-        if (entry != null)
-          tmpAnnotations.add(entry);
-      }
+    private final List<? extends Annotation> annotations;
+
+    public PojoParameterImpl(Type type, Annotation[] annotations) {
+        this.type = type;
+        List<Annotation> tmpAnnotations = new ArrayList<Annotation>();
+        if (annotations != null) {
+            for (Annotation entry : annotations) {
+                if (entry != null)
+                    tmpAnnotations.add(entry);
+            }
+        }
+        this.annotations = Collections.unmodifiableList(tmpAnnotations);
     }
-    this.annotations = Collections.unmodifiableList(tmpAnnotations);
-  }
 
-  public List<? extends Annotation> getAnnotations() {
-    return annotations;
-  }
-
-  @SuppressWarnings("unchecked")
-  public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
-
-    for (Annotation entry : annotations) {
-      if (entry.annotationType().equals(annotationClass)) {
-        return (T) entry;
-      }
+    public List<? extends Annotation> getAnnotations() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return null;
-  }
 
-  public Class<?> getType() {
-    return (Class<?>) Resolver.getEnclosingType(type);
-  }
+    @SuppressWarnings("unchecked")
+    public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean isParameterized() {
-    return (type instanceof ParameterizedType);
-  }
+    public Class<?> getType() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public List<Type> getParameterTypes() {
-    return Arrays.asList(Resolver.getParameterTypes(type));
-  }
+    public boolean isParameterized() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String toString() {
-    return String.format("%s [@%s: Type=%s, Annotations=%s]", this.getClass().getName(), this.hashCode(), type, annotations);
-  }
+    public List<Type> getParameterTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

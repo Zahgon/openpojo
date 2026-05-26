@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 
@@ -31,34 +29,34 @@ import com.openpojo.random.RandomGenerator;
  * @author oshoukry
  */
 public class ClassRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { Class.class };
 
-  private ClassRandomGenerator() {
+    private static final Class<?>[] TYPES = new Class<?>[] { Class.class };
 
-  }
+    private ClassRandomGenerator() {
+    }
 
-  public static RandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
+    public static RandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Object doGenerate(final Class<?> type) {
-    return RandomFactory.getRandomValue(RandomClass.class).getClass();
-  }
+    public Object doGenerate(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final RandomGenerator INSTANCE = new ClassRandomGenerator();
-  }
+    private static class Instance {
 
-  /**
-   * Interface place holder used to generated dynamic Class objects.
-   *
-   * @author oshoukry
-   */
-  private interface RandomClass {
+        private static final RandomGenerator INSTANCE = new ClassRandomGenerator();
+    }
 
-  }
+    /**
+     * Interface place holder used to generated dynamic Class objects.
+     *
+     * @author oshoukry
+     */
+    private interface RandomClass {
+    }
 }

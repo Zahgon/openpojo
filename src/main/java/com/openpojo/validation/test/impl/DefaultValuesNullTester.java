@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.test.impl;
 
 import com.openpojo.business.annotation.BusinessKey;
@@ -33,14 +32,7 @@ import com.openpojo.validation.utils.ValidationHelper;
  */
 public class DefaultValuesNullTester implements Tester {
 
-  public void run(final PojoClass pojoClass) {
-    final Object classInstance = ValidationHelper.getBasicInstance(pojoClass);
-
-    for (final PojoField fieldEntry : pojoClass.getPojoFields()) {
-      if (!fieldEntry.isPrimitive() && !fieldEntry.isFinal() && fieldEntry.getAnnotation(BusinessKey.class) == null) {
-        Affirm.affirmNull(String.format("Expected null value for for field=[%s]", fieldEntry), fieldEntry.get(classInstance));
-      }
+    public void run(final PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
-
 }

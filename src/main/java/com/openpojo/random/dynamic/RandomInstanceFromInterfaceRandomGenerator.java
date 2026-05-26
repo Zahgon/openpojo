@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.dynamic;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.exception.ReflectionException;
 import com.openpojo.reflection.impl.PojoClassFactory;
@@ -33,36 +31,27 @@ import com.openpojo.reflection.impl.PojoClassFactory;
  */
 public class RandomInstanceFromInterfaceRandomGenerator {
 
-  public static RandomInstanceFromInterfaceRandomGenerator getInstance() {
-    return Instance.INSTANCE;
-  }
-
-  /**
-   * This method returns a random instance for a given interface.
-   * The instance will return random values upon method invocations.
-   *
-   * @param <T>
-   *     The type to generate an instance of.
-   * @param clazz
-   *     The interface to generate the implementations on.
-   * @return An instance of the interface.
-   */
-  @SuppressWarnings("unchecked")
-  public <T> T doGenerate(final Class<T> clazz) {
-    PojoClass pojoClass = PojoClassFactory.getPojoClass(clazz);
-    if (!pojoClass.isInterface()) {
-      throw ReflectionException.getInstance(
-          String.format("[%s] is not an interface, can't create a proxy for concrete or abstract types.", pojoClass.getName()));
+    public static RandomInstanceFromInterfaceRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    InvocationHandler handler = RandomReturnInvocationHandler.getInstance();
+    /**
+     * This method returns a random instance for a given interface.
+     * The instance will return random values upon method invocations.
+     *
+     * @param <T>
+     *     The type to generate an instance of.
+     * @param clazz
+     *     The interface to generate the implementations on.
+     * @return An instance of the interface.
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T doGenerate(final Class<T> clazz) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return (T) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-        new Class<?>[] { pojoClass.getClazz() }, handler);
-  }
+    private static class Instance {
 
-  private static class Instance {
-    private static final RandomInstanceFromInterfaceRandomGenerator INSTANCE = new RandomInstanceFromInterfaceRandomGenerator();
-  }
-
+        private static final RandomInstanceFromInterfaceRandomGenerator INSTANCE = new RandomInstanceFromInterfaceRandomGenerator();
+    }
 }

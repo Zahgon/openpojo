@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.impl;
 
 import com.openpojo.reflection.PojoPackage;
@@ -25,11 +24,11 @@ import com.openpojo.reflection.PojoPackage;
  */
 public class PojoPackageFactory {
 
-  public static PojoPackage getPojoPackage(final String packageName) {
-    return new PojoPackageImpl(packageName);
-  }
+    public static PojoPackage getPojoPackage(final String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private PojoPackageFactory() {
-    throw new UnsupportedOperationException(PojoPackageFactory.class.getName() + " should not be constructed!");
-  }
+    private PojoPackageFactory() {
+        throw new UnsupportedOperationException(PojoPackageFactory.class.getName() + " should not be constructed!");
+    }
 }

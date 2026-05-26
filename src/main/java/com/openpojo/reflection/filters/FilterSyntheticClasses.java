@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.filters;
 
 import com.openpojo.reflection.PojoClass;
@@ -26,17 +25,17 @@ import com.openpojo.reflection.PojoClassFilter;
  */
 public class FilterSyntheticClasses implements PojoClassFilter {
 
-  public boolean include(PojoClass pojoClass) {
-    return !pojoClass.isSynthetic();
-  }
+    public boolean include(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public boolean equals(Object o) {
-    return this == o || !(o == null || getClass() != o.getClass());
-  }
+    @Override
+    public boolean equals(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public int hashCode() {
-    return this.getClass().hashCode();
-  }
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

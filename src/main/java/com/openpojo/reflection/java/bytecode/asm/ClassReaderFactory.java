@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm;
 
 import com.openpojo.reflection.exception.ReflectionException;
@@ -27,17 +26,11 @@ import org.objectweb.asm.ClassReader;
  */
 public class ClassReaderFactory {
 
-  private ClassReaderFactory() {
-    throw new UnsupportedOperationException(ClassReaderFactory.class.getName() + " should not be constructed!");
-  }
-
-  public static ClassReader getClassReader(Class clazz) {
-    try {
-      return new ClassReader(clazz.getResourceAsStream(Java.PATH_DELIMITER + clazz.getName().replace(Java.PACKAGE_DELIMITER,
-          Java.PATH_DELIMITER) + Java.CLASS_EXTENSION));
-    } catch (Throwable t) {
-      throw ReflectionException.getInstance("Failed to create ClassReader for class [" + clazz + "]", t);
+    private ClassReaderFactory() {
+        throw new UnsupportedOperationException(ClassReaderFactory.class.getName() + " should not be constructed!");
     }
-  }
 
+    public static ClassReader getClassReader(Class clazz) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

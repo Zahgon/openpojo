@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.impl;
 
 import java.lang.annotation.Annotation;
@@ -23,7 +22,6 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
 import com.openpojo.log.utils.MessageFormatter;
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoClassFilter;
@@ -40,77 +38,55 @@ import com.openpojo.reflection.java.packageloader.Package;
  */
 class PojoPackageImpl implements PojoPackage {
 
-  private final String packageName;
-  private final PojoClass packageInfoPojoClass;
-  private final Package jdkPackage;
+    private final String packageName;
 
-  public String getName() {
-    return packageName;
-  }
+    private final PojoClass packageInfoPojoClass;
 
-  PojoPackageImpl(final String packageName) {
-    if (packageName == null) {
-      throw new IllegalArgumentException("PackageName can not be null");
+    private final Package jdkPackage;
+
+    public String getName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    this.packageName = packageName;
-
-    jdkPackage = new Package(packageName);
-    if (!jdkPackage.isValid()) {
-      throw ReflectionException.getInstance(MessageFormatter.format("Package [{0}] is not valid", packageName));
+    PojoPackageImpl(final String packageName) {
+        if (packageName == null) {
+            throw new IllegalArgumentException("PackageName can not be null");
+        }
+        this.packageName = packageName;
+        jdkPackage = new Package(packageName);
+        if (!jdkPackage.isValid()) {
+            throw ReflectionException.getInstance(MessageFormatter.format("Package [{0}] is not valid", packageName));
+        }
+        Class<?> infoClass = ClassUtil.loadClass(packageName + Java.PACKAGE_DELIMITER + Java.PACKAGE_INFO);
+        if (infoClass != null) {
+            packageInfoPojoClass = PojoClassFactory.getPojoClass(infoClass);
+        } else {
+            packageInfoPojoClass = null;
+        }
     }
 
-    Class<?> infoClass = ClassUtil.loadClass(packageName + Java.PACKAGE_DELIMITER + Java.PACKAGE_INFO);
-
-    if (infoClass != null) {
-      packageInfoPojoClass = PojoClassFactory.getPojoClass(infoClass);
-    } else {
-      packageInfoPojoClass = null;
-    }
-  }
-
-  public List<PojoClass> getPojoClasses() {
-    return getPojoClasses(null);
-  }
-
-  public List<PojoClass> getPojoClasses(final PojoClassFilter filter) {
-    List<PojoClass> pojoClasses = new LinkedList<PojoClass>();
-
-    for (Type type : jdkPackage.getTypes()) {
-      PojoClass pojoClass = PojoClassFactory.getPojoClass((Class<?>) type);
-      if (pojoClass != null && (filter == null || filter.include(pojoClass))) {
-        pojoClasses.add(pojoClass);
-      }
+    public List<PojoClass> getPojoClasses() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    return pojoClasses;
-  }
-
-  public List<PojoPackage> getPojoSubPackages() {
-    List<PojoPackage> pojoPackages = new LinkedList<PojoPackage>();
-    for (Package entry : jdkPackage.getSubPackages()) {
-      pojoPackages.add(new PojoPackageImpl(entry.getPackageName()));
+    public List<PojoClass> getPojoClasses(final PojoClassFilter filter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return pojoPackages;
-  }
 
-  public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {
-    if (packageInfoPojoClass == null) {
-      return null;
+    public List<PojoPackage> getPojoSubPackages() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return packageInfoPojoClass.getAnnotation(annotationClass);
-  }
 
-  public List<? extends Annotation> getAnnotations() {
-    if (packageInfoPojoClass == null) {
-      return Collections.emptyList();
+    public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return packageInfoPojoClass.getAnnotations();
-  }
 
-  @Override
-  public String toString() {
-    return String.format("PojoPackageImpl [packageName=%s]", packageName);
-  }
+    public List<? extends Annotation> getAnnotations() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.util;
 
 import java.util.Collection;
-
 import com.openpojo.random.exception.RandomGeneratorException;
 
 /**
@@ -27,15 +25,11 @@ import com.openpojo.random.exception.RandomGeneratorException;
  */
 public class Helper {
 
-  public static void assertIsAssignableTo(Class<?> type, Collection<Class<?>> knownTypes) {
-    for (Class<?> knownType : knownTypes) {
-      if (type.isAssignableFrom(knownType))
-        return;
+    public static void assertIsAssignableTo(Class<?> type, Collection<Class<?>> knownTypes) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    throw RandomGeneratorException.getInstance("Invalid type requested [" + type + "]");
-  }
 
-  private Helper() {
-    throw new UnsupportedOperationException(Helper.class.getName() +  " should not be constructed!");
-  }
+    private Helper() {
+        throw new UnsupportedOperationException(Helper.class.getName() + " should not be constructed!");
+    }
 }

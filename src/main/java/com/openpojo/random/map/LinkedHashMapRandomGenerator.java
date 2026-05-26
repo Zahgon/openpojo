@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import com.openpojo.random.map.util.BaseMapRandomGenerator;
 import com.openpojo.random.map.util.MapHelper;
 import com.openpojo.random.util.Helper;
@@ -32,23 +30,24 @@ import com.openpojo.random.util.SerializableComparableObject;
  * @author oshoukry
  */
 public class LinkedHashMapRandomGenerator extends BaseMapRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { LinkedHashMap.class };
-  private static final LinkedHashMapRandomGenerator INSTANCE = new LinkedHashMapRandomGenerator();
 
-  public static LinkedHashMapRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { LinkedHashMap.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final LinkedHashMapRandomGenerator INSTANCE = new LinkedHashMapRandomGenerator();
 
-  @Override
-  protected Map getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return MapHelper.buildMap(new LinkedHashMap(), SerializableComparableObject.class, SerializableComparableObject.class);
-  }
+    public static LinkedHashMapRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private LinkedHashMapRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Map getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private LinkedHashMapRandomGenerator() {
+    }
 }

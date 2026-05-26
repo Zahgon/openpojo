@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.queue;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.LinkedBlockingQueue;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -29,23 +27,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class LinkedBlockingQueueRandomGenerator extends BaseCollectionRandomGenerator {
-  private final Class<?>[] TYPES = new Class<?>[] { LinkedBlockingQueue.class };
-  public static final LinkedBlockingQueueRandomGenerator INSTANCE = new LinkedBlockingQueueRandomGenerator();
 
-  public static LinkedBlockingQueueRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private final Class<?>[] TYPES = new Class<?>[] { LinkedBlockingQueue.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public static final LinkedBlockingQueueRandomGenerator INSTANCE = new LinkedBlockingQueueRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new LinkedBlockingQueue();
-  }
+    public static LinkedBlockingQueueRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private LinkedBlockingQueueRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private LinkedBlockingQueueRandomGenerator() {
+    }
 }

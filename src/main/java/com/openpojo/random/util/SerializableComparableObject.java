@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.util;
 
 import java.io.Serializable;
@@ -24,24 +23,21 @@ import java.io.Serializable;
  * @author oshoukry
  */
 public class SerializableComparableObject implements Serializable, Comparable {
-  private static final long serialVersionUID = 1L;
 
-  @SuppressWarnings("NullableProblems")
-  public int compareTo(Object other) {
-    if (other == null || this.hashCode() > other.hashCode())
-      return 1;
-    if (this.hashCode() == other.hashCode())
-      return 0;
-    return -1;
-  }
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public boolean equals(Object o) {
-    return !(o == null || getClass() != o.getClass()) && this.hashCode() == o.hashCode();
-  }
+    @SuppressWarnings("NullableProblems")
+    public int compareTo(Object other) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public int hashCode() {
-    return System.identityHashCode(this);
-  }
+    @Override
+    public boolean equals(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

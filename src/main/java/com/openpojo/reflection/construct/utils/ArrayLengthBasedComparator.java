@@ -15,16 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.construct.utils;
 
 /**
  * @author oshoukry
  */
 public abstract class ArrayLengthBasedComparator {
-  public abstract boolean compare(final Class<?>[] leftHand, final Class<?>[] rightHand);
 
-  protected int getLength(final Object[] array) {
-    return array == null ? -1 : array.length;
-  }
+    public abstract boolean compare(final Class<?>[] leftHand, final Class<?>[] rightHand);
+
+    protected int getLength(final Object[] array) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

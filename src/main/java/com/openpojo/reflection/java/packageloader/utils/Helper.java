@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.packageloader.utils;
 
 import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
-
 import com.openpojo.reflection.java.Java;
 import com.openpojo.reflection.java.load.ClassUtil;
 
@@ -30,77 +28,38 @@ import com.openpojo.reflection.java.load.ClassUtil;
  */
 public class Helper {
 
-  public static boolean isClass(String entry) {
-    return entry != null && entry.endsWith(Java.CLASS_EXTENSION);
-  }
-
-  public static String getFQClassName(String entry) {
-    String fullyQualifiedName = entry.substring(0, entry.length() - Java.CLASS_EXTENSION.length());
-    return fullyQualifiedName.replace(Java.PATH_DELIMITER, Java.PACKAGE_DELIMITER);
-  }
-
-  public static Set<Type> loadClassesFromGivenPackage(Set<String> classNames, String packageName) {
-    Set<Type> entries = new HashSet<Type>();
-    for (String entry : classNames) {
-      int endIndex = entry.lastIndexOf(Java.PACKAGE_DELIMITER);
-
-      String entryPackageName = "";
-
-      if (endIndex > 0)
-        entryPackageName = entry.substring(0, endIndex);
-
-      if (entryPackageName.equals(packageName)) {
-        Type entryClass = ClassUtil.loadClass(entry, false);
-        if (entryClass != null)
-          entries.add(entryClass);
-      }
+    public static boolean isClass(String entry) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return entries;
-  }
 
-  public static Set<String> getSubPackagesOfPackage(Set<String> classNames, String packageName) {
-    Set<String> subPackages = new HashSet<String>();
-    for (String entry : classNames) {
-      int endIndex = entry.lastIndexOf(Java.PACKAGE_DELIMITER);
-      String typeClassPackageName;
-      if (endIndex > 0) {
-        typeClassPackageName = entry.substring(0, endIndex);
-        String directSubPackageName = getDirectSubPackageName(packageName, typeClassPackageName);
-        if (directSubPackageName != null)
-          subPackages.add(directSubPackageName);
-      }
+    public static String getFQClassName(String entry) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return subPackages;
-  }
 
-  /**
-   * This method breaks up a package path into its elements returning the first sub-element only.
-   * For example, if packageName is "com" and the JAR file has only one class
-   * "com.openpojo.reflection.SomeClass.class", then the return will be set to "com.openpojo".
-   *
-   * @param parentPackageName
-   *     The reference package name.
-   * @param subPackageName
-   *     The subpackage name.
-   * @return A first sub level bellow packageName.
-   */
-  static String getDirectSubPackageName(final String parentPackageName, final String subPackageName) {
-    String parentPackageNameAsPath = "";
-
-    if (parentPackageName != null && parentPackageName.length() > 0)
-      parentPackageNameAsPath = parentPackageName + Java.PACKAGE_DELIMITER;
-
-    if (subPackageName.startsWith(parentPackageNameAsPath) && subPackageName.length() > parentPackageNameAsPath.length()) {
-      String[] subPackageTokens;
-      subPackageTokens = subPackageName.substring(parentPackageNameAsPath.length()).split("\\" + Java.PACKAGE_DELIMITER);
-      if (subPackageTokens.length > 0) {
-        return parentPackageNameAsPath + subPackageTokens[0];
-      }
+    public static Set<Type> loadClassesFromGivenPackage(Set<String> classNames, String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return null;
-  }
 
-  private Helper() {
-    throw new UnsupportedOperationException(Helper.class.getName() +  " should not be constructed!");
-  }
+    public static Set<String> getSubPackagesOfPackage(Set<String> classNames, String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * This method breaks up a package path into its elements returning the first sub-element only.
+     * For example, if packageName is "com" and the JAR file has only one class
+     * "com.openpojo.reflection.SomeClass.class", then the return will be set to "com.openpojo".
+     *
+     * @param parentPackageName
+     *     The reference package name.
+     * @param subPackageName
+     *     The subpackage name.
+     * @return A first sub level bellow packageName.
+     */
+    static String getDirectSubPackageName(final String parentPackageName, final String subPackageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private Helper() {
+        throw new UnsupportedOperationException(Helper.class.getName() + " should not be constructed!");
+    }
 }

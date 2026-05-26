@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.version;
 
 import com.openpojo.reflection.java.version.impl.VersionImp;
@@ -25,19 +24,15 @@ import com.openpojo.reflection.java.version.impl.VersionImp;
  */
 public class VersionFactory {
 
-  public static Version getImplementationVersion(Class clazz) {
-    if (clazz != null)
-      return getVersion(clazz.getPackage().getImplementationVersion());
-    return new VersionImp(null);
-  }
+    public static Version getImplementationVersion(Class clazz) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    public static Version getVersion(String version) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public static Version getVersion(String version) {
-    return new VersionImp(version);
-  }
-
-  private VersionFactory() {
-    throw new UnsupportedOperationException(VersionFactory.class.getName() +  " should not be constructed!");
-
-  }
+    private VersionFactory() {
+        throw new UnsupportedOperationException(VersionFactory.class.getName() + " should not be constructed!");
+    }
 }

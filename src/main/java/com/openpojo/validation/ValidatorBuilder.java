@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.openpojo.validation.exception.ValidationException;
 import com.openpojo.validation.impl.DefaultValidator;
 import com.openpojo.validation.rule.Rule;
@@ -31,46 +29,34 @@ import com.openpojo.validation.test.Tester;
  */
 public class ValidatorBuilder {
 
-  private List<Rule> rules = new ArrayList<Rule>();
-  private List<Tester> testers = new ArrayList<Tester>();
+    private List<Rule> rules = new ArrayList<Rule>();
 
-  private ValidatorBuilder() {
-  }
+    private List<Tester> testers = new ArrayList<Tester>();
 
-  public static ValidatorBuilder create() {
-    return new ValidatorBuilder();
-  }
+    private ValidatorBuilder() {
+    }
 
-  public ValidatorBuilder with(Rule... rules) {
-    if (rules != null)
-      for (Rule rule : rules) {
-        if (rule != null)
-          this.rules.add(rule);
-      }
-    return this;
-  }
+    public static ValidatorBuilder create() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public List<Rule> getRules() {
-    return rules;
-  }
+    public ValidatorBuilder with(Rule... rules) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public ValidatorBuilder with(Tester... testers) {
-    if (testers != null)
-      for (Tester tester : testers) {
-        if (tester != null)
-          this.testers.add(tester);
-      }
-    return this;
-  }
+    public List<Rule> getRules() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public List<Tester> getTesters() {
-    return testers;
-  }
+    public ValidatorBuilder with(Tester... testers) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Validator build() {
-    if (rules.size() == 0 && testers.size() == 0)
-      throw ValidationException.getInstance("You must add at least 1 Rule or Tester before building Validator");
-    return new DefaultValidator(rules, testers);
-  }
+    public List<Tester> getTesters() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    public Validator build() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.util;
 
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Random;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.reflection.impl.ParameterizableFactory;
 
@@ -34,25 +32,16 @@ import com.openpojo.reflection.impl.ParameterizableFactory;
  */
 public class CollectionHelper {
 
-  private static final Random RANDOM = new Random(new Date().getTime());
-  public static final int MAX_RANDOM_ELEMENTS = 5;
+    private static final Random RANDOM = new Random(new Date().getTime());
 
-  @SuppressWarnings("unchecked")
-  public static Collection buildCollections(Collection collection, Type type) {
-    if (type == null || collection == null)
-      return collection;
+    public static final int MAX_RANDOM_ELEMENTS = 5;
 
-    int counter = RANDOM.nextInt(MAX_RANDOM_ELEMENTS) + 1;
-
-    collection.clear();
-    while (counter-- > 0) {
-      Object nextEntry = RandomFactory.getRandomValue(ParameterizableFactory.getInstance(type));
-      collection.add(nextEntry);
+    @SuppressWarnings("unchecked")
+    public static Collection buildCollections(Collection collection, Type type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return collection;
-  }
 
-  private CollectionHelper() {
-    throw new UnsupportedOperationException(CollectionHelper.class.getName() + " should not be constructed!");
-  }
+    private CollectionHelper() {
+        throw new UnsupportedOperationException(CollectionHelper.class.getName() + " should not be constructed!");
+    }
 }

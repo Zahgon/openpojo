@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.load;
 
 /**
@@ -23,32 +22,27 @@ package com.openpojo.reflection.java.load;
  */
 public class ClassUtil {
 
-  public static boolean isClassLoaded(String className) {
-    return loadClass(className) != null;
-  }
-
-  public static Class<?> loadClass(String className) {
-    return loadClass(className, true);
-  }
-
-  public static Class<?> loadClass(String className, boolean initialize) {
-    return loadClass(className, initialize, getThreadClassLoader());
-  }
-
-  public static Class<?> loadClass(String className, boolean initialize, ClassLoader classloader) {
-    try {
-      return Class.forName(className, initialize, classloader);
-    } catch (LinkageError linkageError) { // class depends on another that wasn't found.
-    } catch (ClassNotFoundException classNotFoundException) { // no such class found.
+    public static boolean isClassLoaded(String className) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return null;
-  }
 
-  private static ClassLoader getThreadClassLoader() {
-    return Thread.currentThread().getContextClassLoader();
-  }
+    public static Class<?> loadClass(String className) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private ClassUtil() {
-    throw new UnsupportedOperationException(ClassUtil.class.getName() +  " should not be constructed!");
-  }
+    public static Class<?> loadClass(String className, boolean initialize) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public static Class<?> loadClass(String className, boolean initialize, ClassLoader classloader) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private static ClassLoader getThreadClassLoader() {
+        return Thread.currentThread().getContextClassLoader();
+    }
+
+    private ClassUtil() {
+        throw new UnsupportedOperationException(ClassUtil.class.getName() + " should not be constructed!");
+    }
 }

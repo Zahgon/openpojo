@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.packageloader.env;
 
 import java.lang.reflect.Type;
@@ -23,7 +22,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
 import com.openpojo.log.LoggerFactory;
 import com.openpojo.reflection.java.Java;
 import com.openpojo.reflection.java.packageloader.reader.JarFileReader;
@@ -33,71 +31,67 @@ import com.openpojo.reflection.java.packageloader.utils.Helper;
  * @author oshoukry
  */
 public class JavaClassPathClassLoader {
-  private static final String DEFAULT_CLASS_PATH_PROPERTY_NAMES[] = {
-      "java.library.path", "java.class.path", "java.ext.dirs", "sun.boot.class.path"
-  };
 
-  private static final JavaClassPathClassLoader INSTANCE = new JavaClassPathClassLoader();
+    private static final String[] DEFAULT_CLASS_PATH_PROPERTY_NAMES = { "java.library.path", "java.class.path", "java.ext.dirs", "sun.boot.class.path" };
 
-  private final Set<String> classPathPropertyNames = new HashSet<String>();
-  private Set<String> classNames = new HashSet<String>();
+    private static final JavaClassPathClassLoader INSTANCE = new JavaClassPathClassLoader();
 
-  private JavaClassPathClassLoader(String... propertyNames) {
-    classPathPropertyNames.addAll(Arrays.asList(propertyNames));
-    loadClassNames();
-  }
+    private final Set<String> classPathPropertyNames = new HashSet<String>();
 
-  private JavaClassPathClassLoader() {
-    this(DEFAULT_CLASS_PATH_PROPERTY_NAMES);
-  }
+    private Set<String> classNames = new HashSet<String>();
 
-  public static JavaClassPathClassLoader getInstance() {
-    return INSTANCE;
-  }
-
-  public static JavaClassPathClassLoader getInstance(String... propertyNames) {
-    return new JavaClassPathClassLoader(propertyNames);
-  }
-
-  public Set<Type> getTypesInPackage(String packageName) {
-    return Helper.loadClassesFromGivenPackage(classNames, packageName);
-  }
-
-  public Set<String> getClassPathKeys() {
-    return Collections.unmodifiableSet(classPathPropertyNames);
-  }
-
-  public Set<String> getClassNames() {
-    return Collections.unmodifiableSet(classNames);
-  }
-
-  private void loadClassNames() {
-    for (String name : classPathPropertyNames) {
-      String envProperty = System.getProperty(name);
-      if (envProperty != null) {
-        String[] entries = envProperty.split(Java.CLASSPATH_DELIMITER);
-        for (String entry : entries) {
-          LoggerFactory.getLogger(this.getClass()).info("Loading classes from: {0}", entry);
-
-          JarFileReader jarFileReader = JarFileReader.getInstance(entry);
-          if (jarFileReader.isValid())
-            classNames.addAll(jarFileReader.getClassNames());
-          else
-            LoggerFactory.getLogger(this.getClass()).warn("Failed to load entries from: [{0}]", entry);
-        }
-      } else
-        LoggerFactory.getLogger(this.getClass()).warn("Failed to get value for environment variable: [{0}]", name);
+    private JavaClassPathClassLoader(String... propertyNames) {
+        classPathPropertyNames.addAll(Arrays.asList(propertyNames));
+        loadClassNames();
     }
-  }
 
-  public boolean hasPackage(String packageName) {
-    for (String entry : classNames)
-      if (entry.startsWith(packageName + Java.PACKAGE_DELIMITER))
-        return true;
-    return false;
-  }
+    private JavaClassPathClassLoader() {
+        this(DEFAULT_CLASS_PATH_PROPERTY_NAMES);
+    }
 
-  public Set<String> getSubPackagesFor(String packageName) {
-    return Helper.getSubPackagesOfPackage(classNames, packageName);
-  }
+    public static JavaClassPathClassLoader getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public static JavaClassPathClassLoader getInstance(String... propertyNames) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Set<Type> getTypesInPackage(String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Set<String> getClassPathKeys() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Set<String> getClassNames() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private void loadClassNames() {
+        for (String name : classPathPropertyNames) {
+            String envProperty = System.getProperty(name);
+            if (envProperty != null) {
+                String[] entries = envProperty.split(Java.CLASSPATH_DELIMITER);
+                for (String entry : entries) {
+                    LoggerFactory.getLogger(this.getClass()).info("Loading classes from: {0}", entry);
+                    JarFileReader jarFileReader = JarFileReader.getInstance(entry);
+                    if (jarFileReader.isValid())
+                        classNames.addAll(jarFileReader.getClassNames());
+                    else
+                        LoggerFactory.getLogger(this.getClass()).warn("Failed to load entries from: [{0}]", entry);
+                }
+            } else
+                LoggerFactory.getLogger(this.getClass()).warn("Failed to get value for environment variable: [{0}]", name);
+        }
+    }
+
+    public boolean hasPackage(String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Set<String> getSubPackagesFor(String packageName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

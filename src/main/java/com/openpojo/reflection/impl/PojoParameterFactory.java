@@ -15,23 +15,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.impl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-
 import com.openpojo.reflection.PojoParameter;
 
 /**
  * @author oshoukry
  */
 public final class PojoParameterFactory {
-  public static PojoParameter getPojoParameter(Type type, Annotation[] annotations) {
-    return new PojoParameterImpl(type, annotations);
-  }
 
-  private PojoParameterFactory() {
-    throw new UnsupportedOperationException(PojoParameterFactory.class.getName() + " should not be constructed!");
-  }
+    public static PojoParameter getPojoParameter(Type type, Annotation[] annotations) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private PojoParameterFactory() {
+        throw new UnsupportedOperationException(PojoParameterFactory.class.getName() + " should not be constructed!");
+    }
 }

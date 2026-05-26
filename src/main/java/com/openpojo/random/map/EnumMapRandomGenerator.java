@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.map;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
-
 import com.openpojo.random.map.util.BaseMapRandomGenerator;
 import com.openpojo.random.map.util.MapHelper;
 import com.openpojo.random.util.Helper;
@@ -34,35 +32,29 @@ import com.openpojo.reflection.Parameterizable;
  * @author oshoukry
  */
 public class EnumMapRandomGenerator extends BaseMapRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { EnumMap.class };
-  private static final EnumMapRandomGenerator INSTANCE = new EnumMapRandomGenerator();
 
-  public static EnumMapRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { EnumMap.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final EnumMapRandomGenerator INSTANCE = new EnumMapRandomGenerator();
 
-  @Override
-  protected Map getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return MapHelper.buildMap(new EnumMap<SomeEnum, SerializableComparableObject>(SomeEnum.class), SomeEnum.class,
-        SerializableComparableObject.class);
-  }
+    public static EnumMapRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @SuppressWarnings("unchecked")
-  public Map doGenerate(Parameterizable parameterizedType) {
-    Helper.assertIsAssignableTo(parameterizedType.getType(), getTypes());
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    Class<?> type = (Class<?>) parameterizedType.getParameterTypes().get(0);
-    EnumMap returnedMap = new EnumMap(type);
-    return MapHelper.buildMap(returnedMap, parameterizedType.getParameterTypes().get(0),
-        parameterizedType.getParameterTypes().get(1));
-  }
+    @Override
+    protected Map getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private EnumMapRandomGenerator() {
-  }
+    @SuppressWarnings("unchecked")
+    public Map doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    private EnumMapRandomGenerator() {
+    }
 }

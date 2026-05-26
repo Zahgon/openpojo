@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.cache;
 
 import com.openpojo.cache.CacheStorage;
@@ -28,40 +27,41 @@ import com.openpojo.reflection.PojoClass;
  * @author oshoukry
  */
 public class PojoCache {
-  private static CacheStorage<PojoClass> pojoClassCache = CacheStorageFactory.getTemporalCacheStorage();
 
-  /**
-   * Retrieve an implementation from Cache.
-   *
-   * @param name
-   *     Fully Qualified Class Name.
-   * @return Cached PojoReference, or null if none found.
-   */
-  public static PojoClass getPojoClass(final String name) {
-    return pojoClassCache.get(name);
-  }
+    private static CacheStorage<PojoClass> pojoClassCache = CacheStorageFactory.getTemporalCacheStorage();
 
-  /**
-   * Add a PojoClass definition to the Cache.
-   *
-   * @param name
-   *     Fully Qualified Class Name.
-   * @param pojoClass
-   *     The entry to add to the cache.
-   */
-  public static void addPojoClass(final String name, final PojoClass pojoClass) {
-    pojoClassCache.add(name, pojoClass);
-  }
+    /**
+     * Retrieve an implementation from Cache.
+     *
+     * @param name
+     *     Fully Qualified Class Name.
+     * @return Cached PojoReference, or null if none found.
+     */
+    public static PojoClass getPojoClass(final String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * This method will clear the cache, which is only needed when testing.
-   * Note: Calling this under a heavy loads can have negatively impact performance.
-   */
-  public static void clear() {
-    pojoClassCache.clear();
-  }
+    /**
+     * Add a PojoClass definition to the Cache.
+     *
+     * @param name
+     *     Fully Qualified Class Name.
+     * @param pojoClass
+     *     The entry to add to the cache.
+     */
+    public static void addPojoClass(final String name, final PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private PojoCache() {
-    throw new UnsupportedOperationException(PojoCache.class.getName() + " should not be constructed!");
-  }
+    /**
+     * This method will clear the cache, which is only needed when testing.
+     * Note: Calling this under a heavy loads can have negatively impact performance.
+     */
+    public static void clear() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private PojoCache() {
+        throw new UnsupportedOperationException(PojoCache.class.getName() + " should not be constructed!");
+    }
 }

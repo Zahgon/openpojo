@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.filters;
 
 import com.openpojo.reflection.PojoClass;
@@ -28,27 +27,29 @@ import com.openpojo.reflection.PojoClassFilter;
  * @author oshoukry
  */
 public class FilterCloverClasses implements PojoClassFilter {
-  private static final String DEFAULT_CLOVER_TAG = "$__CLR";
 
-  public boolean include(final PojoClass pojoClass) {
-    return !pojoClass.getName().contains(DEFAULT_CLOVER_TAG);
-  }
+    private static final String DEFAULT_CLOVER_TAG = "$__CLR";
 
-  @Override
-  public boolean equals(Object o) {
-    return this == o || !(o == null || getClass() != o.getClass());
-  }
+    public boolean include(final PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public int hashCode() {
-    return this.getClass().hashCode();
-  }
+    @Override
+    public boolean equals(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public static FilterCloverClasses getInstance() {
-    return Instance.INSTANCE;
-  }
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final FilterCloverClasses INSTANCE = new FilterCloverClasses();
-  }
+    public static FilterCloverClasses getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private static class Instance {
+
+        private static final FilterCloverClasses INSTANCE = new FilterCloverClasses();
+    }
 }

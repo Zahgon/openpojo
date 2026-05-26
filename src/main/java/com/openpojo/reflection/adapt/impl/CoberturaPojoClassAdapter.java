@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.adapt.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoField;
 import com.openpojo.reflection.PojoMethod;
@@ -32,34 +30,21 @@ import com.openpojo.reflection.impl.PojoClassImpl;
  */
 public class CoberturaPojoClassAdapter implements PojoClassAdapter {
 
-  private static final String COBERTURA_INJECTED = "__cobertura_";
+    private static final String COBERTURA_INJECTED = "__cobertura_";
 
-  private CoberturaPojoClassAdapter() {
-
-  }
-
-  public PojoClass adapt(PojoClass pojoClass) {
-    final List<PojoField> cleansedPojoFields = new ArrayList<PojoField>();
-    for (final PojoField pojoField : pojoClass.getPojoFields()) {
-      if (!pojoField.getName().startsWith(COBERTURA_INJECTED)) {
-        cleansedPojoFields.add(pojoField);
-      }
+    private CoberturaPojoClassAdapter() {
     }
-    final List<PojoMethod> cleansedPojoMethods = new ArrayList<PojoMethod>();
-    for (final PojoMethod pojoMethod : pojoClass.getPojoMethods()) {
-      if (!pojoMethod.getName().startsWith(COBERTURA_INJECTED)) {
-        cleansedPojoMethods.add(pojoMethod);
-      }
+
+    public PojoClass adapt(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return new PojoClassImpl(pojoClass.getClazz(), cleansedPojoFields, cleansedPojoMethods);
-  }
 
-  public static PojoClassAdapter getInstance() {
-    return Instance.INSTANCE;
-  }
+    public static PojoClassAdapter getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static class Instance {
-    private static final PojoClassAdapter INSTANCE = new CoberturaPojoClassAdapter();
-  }
+    private static class Instance {
 
+        private static final PojoClassAdapter INSTANCE = new CoberturaPojoClassAdapter();
+    }
 }

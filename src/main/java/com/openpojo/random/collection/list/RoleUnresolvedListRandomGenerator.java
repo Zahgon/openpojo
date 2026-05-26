@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.list;
 
 import java.util.Arrays;
 import java.util.Collection;
 import javax.management.relation.RoleUnresolvedList;
-
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.collection.util.CollectionHelper;
 import com.openpojo.random.util.Helper;
@@ -31,22 +29,23 @@ import com.openpojo.random.util.SomeRoleUnresolved;
  * @author oshoukry
  */
 public class RoleUnresolvedListRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { RoleUnresolvedList.class };
-  private static final RoleUnresolvedListRandomGenerator INSTANCE = new RoleUnresolvedListRandomGenerator();
 
-  public static RoleUnresolvedListRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { RoleUnresolvedList.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final RoleUnresolvedListRandomGenerator INSTANCE = new RoleUnresolvedListRandomGenerator();
 
-  public Collection doGenerate(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return CollectionHelper.buildCollections(new RoleUnresolvedList(), SomeRoleUnresolved.class);
-  }
+    public static RoleUnresolvedListRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private RoleUnresolvedListRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Collection doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private RoleUnresolvedListRandomGenerator() {
+    }
 }

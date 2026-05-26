@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.generator.security;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.exception.RandomGeneratorException;
@@ -35,39 +33,29 @@ import com.openpojo.reflection.java.load.ClassUtil;
  */
 public class PrincipalNameRandomGenerator implements RandomGenerator {
 
-  private static final String TYPE = "sun.security.krb5.PrincipalName";
-  private final Class<?> principalNameClass;
-  private static final PrincipalNameRandomGenerator INSTANCE = new PrincipalNameRandomGenerator();
+    private static final String TYPE = "sun.security.krb5.PrincipalName";
 
-  private PrincipalNameRandomGenerator() {
-    principalNameClass = ClassUtil.loadClass(TYPE);
-  }
+    private final Class<?> principalNameClass;
 
-  public static RandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final PrincipalNameRandomGenerator INSTANCE = new PrincipalNameRandomGenerator();
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> supported = new ArrayList<Class<?>>();
-    if (principalNameClass != null)
-      supported.add(principalNameClass);
-    return supported;
-  }
-
-  public Object doGenerate(Class<?> type) {
-    try {
-      PojoClass pojoClass = PojoClassFactory.getPojoClass(principalNameClass);
-      return InstanceFactory.getInstance(pojoClass, getPrincipleParsableString());
-    } catch (Exception e) {
-      throw RandomGeneratorException.getInstance("Failed to generate " + TYPE + " instance.", e);
+    private PrincipalNameRandomGenerator() {
+        principalNameClass = ClassUtil.loadClass(TYPE);
     }
-  }
 
-  private String getPrincipleParsableString() {
-    return RandomFactory.getRandomValue(String.class)
-        + "/"
-        + RandomFactory.getRandomValue(String.class)
-        + "@"
-        + RandomFactory.getRandomValue(String.class);
-  }
+    public static RandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Object doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private String getPrincipleParsableString() {
+        return RandomFactory.getRandomValue(String.class) + "/" + RandomFactory.getRandomValue(String.class) + "@" + RandomFactory.getRandomValue(String.class);
+    }
 }

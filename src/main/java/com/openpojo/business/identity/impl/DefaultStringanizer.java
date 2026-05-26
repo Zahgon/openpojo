@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.identity.impl;
 
 import com.openpojo.reflection.impl.PojoClassFactory;
@@ -24,18 +23,17 @@ import com.openpojo.reflection.impl.PojoClassFactory;
  * @author oshoukry
  */
 class DefaultStringanizer {
-  private static DefaultStringanizer instance = new DefaultStringanizer();
 
-  private DefaultStringanizer() {
-  }
+    private static DefaultStringanizer instance = new DefaultStringanizer();
 
-  public static DefaultStringanizer getInstance() {
-    return instance;
-  }
+    private DefaultStringanizer() {
+    }
 
-  public String toString(Object object) {
-    if (object == null)
-      return "null";
-    return PojoClassFactory.getPojoClass(object.getClass()).toString(object);
-  }
+    public static DefaultStringanizer getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String toString(Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

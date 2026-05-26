@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.type.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-
 import com.openpojo.reflection.java.type.TypeResolver;
 
 /**
@@ -28,15 +26,15 @@ import com.openpojo.reflection.java.type.TypeResolver;
  */
 public class ParameterizedTypeResolver implements TypeResolver<ParameterizedType> {
 
-  public Type getEnclosingType(ParameterizedType type) {
-    return type.getRawType();
-  }
+    public Type getEnclosingType(ParameterizedType type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type resolveType(ParameterizedType type) {
-    return type.getRawType();
-  }
+    public Type resolveType(ParameterizedType type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type[] getParameterTypes(ParameterizedType type) {
-    return type.getActualTypeArguments();
-  }
+    public Type[] getParameterTypes(ParameterizedType type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

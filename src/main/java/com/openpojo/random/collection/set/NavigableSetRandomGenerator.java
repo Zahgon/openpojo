@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 import com.openpojo.reflection.java.load.ClassUtil;
@@ -31,26 +29,24 @@ import com.openpojo.reflection.java.load.ClassUtil;
  * @author oshoukry
  */
 public class NavigableSetRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final String TYPE = "java.util.NavigableSet";
-  private static final NavigableSetRandomGenerator INSTANCE = new NavigableSetRandomGenerator();
 
-  public static NavigableSetRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final String TYPE = "java.util.NavigableSet";
 
-  public Collection<Class<?>> getTypes() {
-    List<Class<?>> types = new ArrayList<Class<?>>();
-    if (ClassUtil.isClassLoaded(TYPE))
-      types.add(ClassUtil.loadClass(TYPE));
-    return types;
-  }
+    private static final NavigableSetRandomGenerator INSTANCE = new NavigableSetRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new TreeSet();
-  }
+    public static NavigableSetRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private NavigableSetRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private NavigableSetRandomGenerator() {
+    }
 }

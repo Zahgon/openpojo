@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.service.impl;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoClassFilter;
 
@@ -28,19 +26,14 @@ import com.openpojo.reflection.PojoClassFilter;
  * @author oshoukry
  */
 public class PojoClassCoverageFilter implements PojoClassFilter {
-  private Set<PojoClassFilter> filters = new HashSet<PojoClassFilter>();
 
-  public void add(PojoClassFilter pojoClassFilter) {
-    if (pojoClassFilter != null) {
-      filters.add(pojoClassFilter);
-    }
-  }
+    private Set<PojoClassFilter> filters = new HashSet<PojoClassFilter>();
 
-  public boolean include(PojoClass pojoClass) {
-    for (PojoClassFilter filter : filters) {
-      if (!filter.include(pojoClass))
-        return false;
+    public void add(PojoClassFilter pojoClassFilter) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return true;
-  }
+
+    public boolean include(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

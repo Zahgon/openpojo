@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm;
 
 import com.openpojo.cache.CacheStorage;
@@ -30,52 +29,39 @@ import org.objectweb.asm.ClassWriter;
  * @author oshoukry
  */
 public class ASMService {
-  private SimpleClassLoader simpleClassLoader = new SimpleClassLoader();
-  private Logger logger = LoggerFactory.getLogger(this.getClass());
-  private CacheStorage<Class<?>> alreadyGeneratedClasses = CacheStorageFactory.getPersistentCacheStorage();
 
-  private ASMService() {
-  }
+    private SimpleClassLoader simpleClassLoader = new SimpleClassLoader();
 
-  public static ASMService getInstance() {
-    return Instance.INSTANCE;
-  }
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  public <T> Class<? extends T> createSubclassFor(Class<T> clazz) {
-    SubClassDefinition subClassDefinition = new DefaultSubClassDefinition(clazz);
-    return createSubclassFor(clazz, subClassDefinition);
-  }
+    private CacheStorage<Class<?>> alreadyGeneratedClasses = CacheStorageFactory.getPersistentCacheStorage();
 
-  @SuppressWarnings("unchecked")
-  public <T> Class<? extends T> createSubclassFor(Class<T> clazz, SubClassDefinition subClassDefinition) {
-    Class<? extends T> generatedClass = (Class<? extends T>) alreadyGeneratedClasses.get(subClassDefinition.getGeneratedClassName());
-
-    if (generatedClass != null) {
-      logger.info("Reusing already generated sub-class for class [{0}]", clazz.getName());
-    } else {
-      try {
-        generatedClass = (Class<? extends T>) simpleClassLoader.loadThisClass(getSubClassByteCode(subClassDefinition),
-            subClassDefinition.getGeneratedClassName());
-        alreadyGeneratedClasses.add(subClassDefinition.getGeneratedClassName(), generatedClass);
-      } catch (Throwable throwable) {
-        throw ReflectionException.getInstance("Failed to create subclass for class: " + clazz, throwable);
-      }
+    private ASMService() {
     }
-    return generatedClass;
-  }
 
-  private byte[] getSubClassByteCode(SubClassDefinition subClassDefinition) {
+    public static ASMService getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    ClassReader classReader = subClassDefinition.getClassReader();
-    ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+    public <T> Class<? extends T> createSubclassFor(Class<T> clazz) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    classReader.accept(new SubClassCreator(cw, subClassDefinition.getGeneratedClassNameAsJDKPath()), 0);
+    @SuppressWarnings("unchecked")
+    public <T> Class<? extends T> createSubclassFor(Class<T> clazz, SubClassDefinition subClassDefinition) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    cw.visitEnd();
-    return cw.toByteArray();
-  }
+    private byte[] getSubClassByteCode(SubClassDefinition subClassDefinition) {
+        ClassReader classReader = subClassDefinition.getClassReader();
+        ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        classReader.accept(new SubClassCreator(cw, subClassDefinition.getGeneratedClassNameAsJDKPath()), 0);
+        cw.visitEnd();
+        return cw.toByteArray();
+    }
 
-  private static class Instance {
-    private static final ASMService INSTANCE = new ASMService();
-  }
+    private static class Instance {
+
+        private static final ASMService INSTANCE = new ASMService();
+    }
 }

@@ -15,11 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.business.identity;
 
 import java.util.LinkedList;
-
 import com.openpojo.business.exception.BusinessException;
 import com.openpojo.business.identity.impl.DefaultIdentityHandler;
 
@@ -32,66 +30,51 @@ import com.openpojo.business.identity.impl.DefaultIdentityHandler;
  */
 public final class IdentityFactory {
 
-  private static volatile LinkedList<IdentityHandler> identityHandlers = new LinkedList<IdentityHandler>();
+    private static volatile LinkedList<IdentityHandler> identityHandlers = new LinkedList<IdentityHandler>();
 
-  static {
-    identityHandlers.add(DefaultIdentityHandler.getInstance());
-  }
-
-  /**
-   * This method looks through the list of registered IdentityHandler(s) and returns the first one that returns true
-   * on handlerFor(Object) call.
-   *
-   * @param object
-   *     the object to use for looking up the appropriate handler.
-   * @return the identityEvaluator
-   */
-  public static IdentityHandler getIdentityHandler(final Object object) {
-    for (IdentityHandler identityHandler : identityHandlers) {
-      if (identityHandler.handlerFor(object)) {
-        return identityHandler;
-      }
+    static {
+        identityHandlers.add(DefaultIdentityHandler.getInstance());
     }
-    throw BusinessException.getInstance(
-        String.format("Invalid IdentityFactory state, no IdentityHandler found for object [%s]", object));
-  }
 
-  /**
-   * This method registers an IdentityHandler to the list of possible IdentityHandlers.
-   * An IdentityHandler will not be registered more than once.
-   *
-   * @param identityHandler
-   *     The identityHandler to register.
-   */
-  public static synchronized void registerIdentityHandler(final IdentityHandler identityHandler) {
-    if (identityHandler == null)
-      throw new IllegalArgumentException("Attempt to register null IdentityHandler");
+    /**
+     * This method looks through the list of registered IdentityHandler(s) and returns the first one that returns true
+     * on handlerFor(Object) call.
+     *
+     * @param object
+     *     the object to use for looking up the appropriate handler.
+     * @return the identityEvaluator
+     */
+    public static IdentityHandler getIdentityHandler(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    LinkedList<IdentityHandler> newList = duplicateIdentityHandlers();
-    newList.remove(identityHandler);
-    newList.addFirst(identityHandler);
-    identityHandlers = newList;
-  }
+    /**
+     * This method registers an IdentityHandler to the list of possible IdentityHandlers.
+     * An IdentityHandler will not be registered more than once.
+     *
+     * @param identityHandler
+     *     The identityHandler to register.
+     */
+    public static synchronized void registerIdentityHandler(final IdentityHandler identityHandler) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * This method unregisters an IdentityHandler.
-   *
-   * @param identityHandler
-   *     The identityHandler to unregister.
-   */
-  public static synchronized void unregisterIdentityHandler(final IdentityHandler identityHandler) {
-    LinkedList<IdentityHandler> newList = duplicateIdentityHandlers();
-    if (newList.remove(identityHandler))
-      identityHandlers = newList;
-  }
+    /**
+     * This method unregisters an IdentityHandler.
+     *
+     * @param identityHandler
+     *     The identityHandler to unregister.
+     */
+    public static synchronized void unregisterIdentityHandler(final IdentityHandler identityHandler) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @SuppressWarnings("unchecked")
-  private static LinkedList<IdentityHandler> duplicateIdentityHandlers() {
-    return (LinkedList<IdentityHandler>) identityHandlers.clone();
+    @SuppressWarnings("unchecked")
+    private static LinkedList<IdentityHandler> duplicateIdentityHandlers() {
+        return (LinkedList<IdentityHandler>) identityHandlers.clone();
+    }
 
-  }
-
-  private IdentityFactory() {
-    throw new UnsupportedOperationException(IdentityFactory.class.getName() +  " should not be constructed!");
-  }
+    private IdentityFactory() {
+        throw new UnsupportedOperationException(IdentityFactory.class.getName() + " should not be constructed!");
+    }
 }

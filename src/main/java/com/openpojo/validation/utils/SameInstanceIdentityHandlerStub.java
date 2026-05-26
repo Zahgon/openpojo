@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.utils;
 
 import com.openpojo.business.identity.IdentityFactory;
@@ -25,39 +24,38 @@ import com.openpojo.business.identity.IdentityHandler;
  * @author oshoukry
  */
 public class SameInstanceIdentityHandlerStub implements IdentityHandler {
-  private Object handlerForObject;
 
-  public static void registerIdentityHandlerStubForValue(Object value) {
-    final SameInstanceIdentityHandlerStub identityHandlerStub = new SameInstanceIdentityHandlerStub();
-    identityHandlerStub.setHandlerForObject(value);
-    IdentityFactory.registerIdentityHandler(identityHandlerStub);
-  }
+    private Object handlerForObject;
 
-  public static void unregisterIdentityHandlerStubForValue(Object value) {
-    IdentityHandler identityHandler = IdentityFactory.getIdentityHandler(value);
-    IdentityFactory.unregisterIdentityHandler(identityHandler);
-  }
+    public static void registerIdentityHandlerStubForValue(Object value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private void setHandlerForObject(final Object handlerForObject) {
-    this.handlerForObject = handlerForObject;
-  }
+    public static void unregisterIdentityHandlerStubForValue(Object value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean areEqual(final Object first, final Object second) {
-    return first == second;
-  }
+    private void setHandlerForObject(final Object handlerForObject) {
+        this.handlerForObject = handlerForObject;
+    }
 
-  public String toString(Object object) {
-    throw new UnsupportedOperationException();
-  }
+    public boolean areEqual(final Object first, final Object second) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void validate(final Object object) {
-  }
+    public String toString(Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int generateHashCode(final Object object) {
-    return System.identityHashCode(object);
-  }
+    public void validate(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean handlerFor(final Object object) {
-    return handlerForObject == object;
-  }
+    public int generateHashCode(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean handlerFor(final Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

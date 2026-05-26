@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.type.impl;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 import java.util.Arrays;
-
 import com.openpojo.reflection.exception.ReflectionException;
 import com.openpojo.reflection.java.type.TypeResolver;
 
@@ -30,31 +28,20 @@ import com.openpojo.reflection.java.type.TypeResolver;
  */
 public class WildcardTypeResolver implements TypeResolver<WildcardType> {
 
-  public Type getEnclosingType(WildcardType type) {
-    return resolveType(type);
-  }
+    public Type getEnclosingType(WildcardType type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type resolveType(WildcardType wildcardType) {
+    public Type resolveType(WildcardType wildcardType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    Type[] lowerBounds = wildcardType.getLowerBounds();
-    Type[] upperBounds = wildcardType.getUpperBounds();
+    public Type[] getParameterTypes(WildcardType wildcardType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    ensureAValidBoundaryExists(lowerBounds, upperBounds);
-
-    return getParameterTypes(wildcardType)[0];
-  }
-
-  public Type[] getParameterTypes(WildcardType wildcardType) {
-    Type[] bounds = wildcardType.getLowerBounds();
-    if (bounds == null || bounds.length == 0)
-      return wildcardType.getUpperBounds();
-    return bounds;
-  }
-
-  private void ensureAValidBoundaryExists(Type[] lowerBounds, Type[] upperBounds) {
-    if (lowerBounds.length > 1 || upperBounds.length > 1 || (upperBounds.length == 0 && lowerBounds.length == 0))
-      throw ReflectionException.getInstance("Unable to identify proper resolution for type, " +
-          "multiple UpperBounds[" + Arrays.toString(upperBounds) + "] Or LowerBounds[" + Arrays.toString(lowerBounds) + "]");
-  }
-
+    private void ensureAValidBoundaryExists(Type[] lowerBounds, Type[] upperBounds) {
+        if (lowerBounds.length > 1 || upperBounds.length > 1 || (upperBounds.length == 0 && lowerBounds.length == 0))
+            throw ReflectionException.getInstance("Unable to identify proper resolution for type, " + "multiple UpperBounds[" + Arrays.toString(upperBounds) + "] Or LowerBounds[" + Arrays.toString(lowerBounds) + "]");
+    }
 }

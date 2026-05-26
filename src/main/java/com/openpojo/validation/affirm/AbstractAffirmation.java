@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.affirm;
 
 import java.lang.reflect.Array;
@@ -25,26 +24,15 @@ import java.lang.reflect.Array;
  */
 public abstract class AbstractAffirmation implements Affirmation {
 
-  public void affirmArrayEquals(String message, Object expected, Object actual) {
-    Integer expectedLength = Array.getLength(expected);
-    affirmEquals(message + " : Arrays are not the same length", expectedLength, actual == null ? null : Array.getLength(actual));
-
-    for (int i = 0; i < expectedLength; i++) {
-      Object expectedArrayElement = Array.get(expected, i);
-      Object actualArrayElement = Array.get(actual, i);
-      try {
-        affirmEquals(message, actualArrayElement, expectedArrayElement);
-      } catch (AssertionError ae) {
-        fail("Array element mismatch value at index [" + i + "] :" + ae.getMessage());
-      }
+    public void affirmArrayEquals(String message, Object expected, Object actual) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  public boolean isArray(Object object) {
-    return object != null && object.getClass().isArray();
-  }
+    public boolean isArray(Object object) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean objectPointersAreTheSame(Object expected, Object actual) {
-    return (expected == null && actual == null) || (expected == actual);
-  }
+    public boolean objectPointersAreTheSame(Object expected, Object actual) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

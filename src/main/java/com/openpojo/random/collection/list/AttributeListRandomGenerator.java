@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.list;
 
 import java.util.Arrays;
 import java.util.Collection;
 import javax.management.Attribute;
 import javax.management.AttributeList;
-
 import com.openpojo.random.RandomGenerator;
 import com.openpojo.random.collection.util.CollectionHelper;
 import com.openpojo.random.util.Helper;
@@ -31,22 +29,23 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class AttributeListRandomGenerator implements RandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { AttributeList.class };
-  private static final AttributeListRandomGenerator INSTANCE = new AttributeListRandomGenerator();
 
-  public static AttributeListRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { AttributeList.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    private static final AttributeListRandomGenerator INSTANCE = new AttributeListRandomGenerator();
 
-  public Collection doGenerate(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return CollectionHelper.buildCollections(new AttributeList(), Attribute.class);
-  }
+    public static AttributeListRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private AttributeListRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Collection doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private AttributeListRandomGenerator() {
+    }
 }

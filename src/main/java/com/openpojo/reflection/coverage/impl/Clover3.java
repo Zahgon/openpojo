@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.coverage.impl;
 
 import com.openpojo.reflection.PojoClassFilter;
@@ -26,32 +25,33 @@ import com.openpojo.reflection.filters.FilterCloverClasses;
  * @author oshoukry
  */
 public class Clover3 extends AbstractCoverageDetector {
-  private static final Clover3 INSTANCE = new Clover3();
 
-  private Clover3() {
-  }
+    private static final Clover3 INSTANCE = new Clover3();
 
-  public static Clover3 getInstance() {
-    return INSTANCE;
-  }
+    private Clover3() {
+    }
 
-  @Override
-  public String getName() {
-    return "Clover 3";
-  }
+    public static Clover3 getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String getCoverageClassName() {
-    return "com_cenqua_clover.TestNameSniffer";
-  }
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public PojoClassFilter getPojoClassFilter() {
-    return FilterCloverClasses.getInstance();
-  }
+    @Override
+    public String getCoverageClassName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public PojoClassAdapter getPojoClassAdapter() {
-    return null;
-  }
+    @Override
+    public PojoClassFilter getPojoClassFilter() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public PojoClassAdapter getPojoClassAdapter() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

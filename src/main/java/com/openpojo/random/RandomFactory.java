@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random;
 
 import com.openpojo.log.Logger;
@@ -58,69 +57,43 @@ import com.openpojo.registry.ServiceRegistrar;
  * @author oshoukry
  */
 public class RandomFactory {
-  private static final Logger logger = LoggerFactory.getLogger(RandomFactory.class);
 
-  /**
-   * Add a random generator to the list of available generators. The latest random generator registered wins.
-   *
-   * @param generator
-   *     The generator to add.
-   */
-  public static synchronized void addRandomGenerator(final RandomGenerator generator) {
-    getRandomGeneratorService().registerRandomGenerator(generator);
-  }
+    private static final Logger logger = LoggerFactory.getLogger(RandomFactory.class);
 
-  /**
-   * This method generates a random value of the requested type.<br>
-   * If the requested type isn't registered in the factory, an RandomGeneratorException will be thrown.
-   *
-   * @param type
-   *     The type to get a random value of.
-   * @param <T>
-   *     The class type to generate an object for.
-   * @return Randomly created value.
-   */
-  @SuppressWarnings("unchecked")
-  public static <T> T getRandomValue(final Class<T> type) {
-    if (GeneratedRandomValues.contains(type)) {
-      logger.warn("Cyclic dependency on random generator for type=[{0}] detected, returning null", type);
-      return null; // seen before, break loop.
+    /**
+     * Add a random generator to the list of available generators. The latest random generator registered wins.
+     *
+     * @param generator
+     *     The generator to add.
+     */
+    public static synchronized void addRandomGenerator(final RandomGenerator generator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    GeneratedRandomValues.add(type);
-
-    try {
-      final RandomGenerator randomGenerator = getRandomGeneratorService().getRandomGeneratorByType(type);
-
-      if (randomGenerator == null) {
-        throw RandomGeneratorException.getInstance("No randomGenerator Found for type " + type);
-      }
-
-      return (T) randomGenerator.doGenerate(type);
-    } finally {
-      GeneratedRandomValues.remove(type);
-    }
-  }
-
-  public static Object getRandomValue(final Parameterizable parameterizable) {
-    if (!parameterizable.isParameterized())
-      return getRandomValue(parameterizable.getType());
-
-    RandomGenerator randomGenerator = getRandomGeneratorService().getRandomGeneratorByParameterizable(parameterizable);
-    if (randomGenerator instanceof ParameterizableRandomGenerator) {
-      return ((ParameterizableRandomGenerator) randomGenerator).doGenerate(parameterizable);
+    /**
+     * This method generates a random value of the requested type.<br>
+     * If the requested type isn't registered in the factory, an RandomGeneratorException will be thrown.
+     *
+     * @param type
+     *     The type to get a random value of.
+     * @param <T>
+     *     The class type to generate an object for.
+     * @return Randomly created value.
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T getRandomValue(final Class<T> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    logger.warn("No ParametrizableRandomGenerator implementation found for parameterized type [" + parameterizable + "] " +
-        "creating non-parameterized instance ");
-    return getRandomValue(parameterizable.getType());
-  }
+    public static Object getRandomValue(final Parameterizable parameterizable) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static RandomGeneratorService getRandomGeneratorService() {
-    return ServiceRegistrar.getInstance().getRandomGeneratorService();
-  }
+    private static RandomGeneratorService getRandomGeneratorService() {
+        return ServiceRegistrar.getInstance().getRandomGeneratorService();
+    }
 
-  private RandomFactory() {
-    throw new UnsupportedOperationException(RandomFactory.class.getName() + " should not be constructed!");
-  }
+    private RandomFactory() {
+        throw new UnsupportedOperationException(RandomFactory.class.getName() + " should not be constructed!");
+    }
 }

@@ -15,12 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.type.impl;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
-
 import com.openpojo.reflection.java.type.TypeResolver;
 
 /**
@@ -28,15 +26,15 @@ import com.openpojo.reflection.java.type.TypeResolver;
  */
 public class TypeVariableResolver implements TypeResolver<TypeVariable> {
 
-  public Type resolveType(TypeVariable type) {
-    return type.getBounds()[0];
-  }
+    public Type resolveType(TypeVariable type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type getEnclosingType(TypeVariable type) {
-    return type.getBounds()[0];
-  }
+    public Type getEnclosingType(TypeVariable type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Type[] getParameterTypes(TypeVariable type) {
-    return type.getBounds();
-  }
+    public Type[] getParameterTypes(TypeVariable type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

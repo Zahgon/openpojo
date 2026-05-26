@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.queue;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.PriorityQueue;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.util.Helper;
 
@@ -29,23 +27,24 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class PriorityQueueRandomGenerator extends BaseCollectionRandomGenerator {
-  private final Class<?>[] TYPES = new Class<?>[] { PriorityQueue.class };
-  public static final PriorityQueueRandomGenerator INSTANCE = new PriorityQueueRandomGenerator();
 
-  public static PriorityQueueRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private final Class<?>[] TYPES = new Class<?>[] { PriorityQueue.class };
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public static final PriorityQueueRandomGenerator INSTANCE = new PriorityQueueRandomGenerator();
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new PriorityQueue();
-  }
+    public static PriorityQueueRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private PriorityQueueRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private PriorityQueueRandomGenerator() {
+    }
 }

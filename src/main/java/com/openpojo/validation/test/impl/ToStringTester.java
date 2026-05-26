@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.test.impl;
 
 import com.openpojo.business.identity.IdentityFactory;
@@ -30,14 +29,7 @@ import com.openpojo.validation.utils.IdentityHandlerStub;
  */
 public class ToStringTester implements Tester {
 
-  public void run(PojoClass pojoClass) {
-    Object instance = RandomFactory.getRandomValue(pojoClass.getClazz());
-
-    IdentityHandlerStub identityHandlerStub = new IdentityHandlerStub(instance);
-    identityHandlerStub.setToStringReturn(RandomFactory.getRandomValue(String.class));
-
-    IdentityFactory.registerIdentityHandler(identityHandlerStub);
-
-    Affirm.affirmEquals("Expected string mismatch", identityHandlerStub.getToStringReturn(), instance.toString());
-  }
+    public void run(PojoClass pojoClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

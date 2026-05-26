@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.packageloader.impl;
 
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.Set;
-
 import com.openpojo.reflection.java.packageloader.PackageLoader;
 import com.openpojo.reflection.java.packageloader.reader.JarFileReader;
 
@@ -29,20 +27,21 @@ import com.openpojo.reflection.java.packageloader.reader.JarFileReader;
  * @author oshoukry
  */
 public final class JARPackageLoader extends PackageLoader {
-  private final JarFileReader jarFileReader;
 
-  public JARPackageLoader(final URL packageURL, final String packageName) {
-    super(packageURL, packageName);
-    jarFileReader = JarFileReader.getInstance(packageURL);
-  }
+    private final JarFileReader jarFileReader;
 
-  @Override
-  public Set<Type> getTypes() {
-    return jarFileReader.getTypesInPackage(packageName);
-  }
+    public JARPackageLoader(final URL packageURL, final String packageName) {
+        super(packageURL, packageName);
+        jarFileReader = JarFileReader.getInstance(packageURL);
+    }
 
-  @Override
-  public Set<String> getSubPackages() {
-    return jarFileReader.getSubPackagesOfPackage(packageName);
-  }
+    @Override
+    public Set<Type> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public Set<String> getSubPackages() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

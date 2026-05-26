@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm;
 
 /**
@@ -23,10 +22,7 @@ package com.openpojo.reflection.java.bytecode.asm;
  */
 public class SimpleClassLoader extends ClassLoader {
 
-  public Class<?> loadThisClass(byte[] classBytes, String className) throws ClassNotFoundException {
-    final Class<?> definedClass = defineClass(className, classBytes, 0, classBytes.length);
-    resolveClass(definedClass);
-    return loadClass(className);
-  }
-
+    public Class<?> loadThisClass(byte[] classBytes, String className) throws ClassNotFoundException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

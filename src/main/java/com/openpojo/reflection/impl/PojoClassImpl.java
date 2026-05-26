@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.impl;
 
 import java.lang.annotation.Annotation;
@@ -25,7 +24,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.PojoField;
 import com.openpojo.reflection.PojoMethod;
@@ -42,198 +40,153 @@ import com.openpojo.reflection.utils.ToStringHelper;
  */
 public class PojoClassImpl implements PojoClass {
 
-  private final String name;
-  private final Class<?> clazz;
-  private final List<PojoField> pojoFields;
-  private final List<PojoMethod> pojoMethods;
+    private final String name;
 
-  public PojoClassImpl(final Class<?> clazz, final List<PojoField> pojoFields, final List<PojoMethod> pojoMethods) {
-    this.clazz = clazz;
-    this.name = clazz.getName();
-    this.pojoFields = Collections.unmodifiableList(pojoFields);
-    this.pojoMethods = Collections.unmodifiableList(pojoMethods);
-  }
+    private final Class<?> clazz;
 
-  public boolean isInterface() {
-    return clazz.isInterface();
-  }
+    private final List<PojoField> pojoFields;
 
-  public boolean isAbstract() {
-    // Java returns true on Abstract call for Interfaces.
-    return Modifier.isAbstract(clazz.getModifiers()) && !isInterface();
-  }
+    private final List<PojoMethod> pojoMethods;
 
-  public boolean isConcrete() {
-    return !(isAbstract() || isInterface() || isEnum());
-  }
-
-  public boolean isEnum() {
-    return clazz.isEnum();
-  }
-
-  public boolean isArray() {
-    return clazz.isArray();
-  }
-
-  public boolean isFinal() {
-    return Modifier.isFinal(clazz.getModifiers());
-  }
-
-  public boolean isSynthetic() {
-    return clazz.isSynthetic();
-  }
-
-  public List<PojoField> getPojoFields() {
-    return pojoFields;
-  }
-
-  public List<PojoField> getPojoFieldsAnnotatedWith(Class<? extends Annotation> annotation) {
-    List<PojoField> returnedFields = new LinkedList<PojoField>();
-    for (PojoField pojoField : pojoFields) {
-      if (pojoField.getAnnotation(annotation) != null)
-        returnedFields.add(pojoField);
+    public PojoClassImpl(final Class<?> clazz, final List<PojoField> pojoFields, final List<PojoMethod> pojoMethods) {
+        this.clazz = clazz;
+        this.name = clazz.getName();
+        this.pojoFields = Collections.unmodifiableList(pojoFields);
+        this.pojoMethods = Collections.unmodifiableList(pojoMethods);
     }
-    return returnedFields;
-  }
 
-  public List<PojoMethod> getPojoMethods() {
-    return pojoMethods;
-  }
-
-  public List<PojoMethod> getPojoMethodsAnnotatedWith(Class<? extends Annotation> annotation) {
-    List<PojoMethod> returnedMethods = new LinkedList<PojoMethod>();
-    for (PojoMethod pojoMethod : pojoMethods) {
-      if (pojoMethod.getAnnotation(annotation) != null)
-        returnedMethods.add(pojoMethod);
+    public boolean isInterface() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return returnedMethods;
-  }
 
-  public List<PojoMethod> getPojoConstructors() {
-    final List<PojoMethod> constructors = new LinkedList<PojoMethod>();
-    for (final PojoMethod pojoMethod : pojoMethods) {
-      if (pojoMethod.isConstructor()) {
-        constructors.add(pojoMethod);
-      }
+    public boolean isAbstract() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return constructors;
-  }
 
-  public PojoClass getEnclosingClass() {
-    if (isNestedClass())
-      return PojoClassFactory.getPojoClass(clazz.getEnclosingClass());
-
-    return null;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {
-    return clazz.getAnnotation(annotationClass);
-  }
-
-  public List<? extends Annotation> getAnnotations() {
-    return Arrays.asList(clazz.getAnnotations());
-  }
-
-  public boolean extendz(final Class<?> type) {
-    return type.isAssignableFrom(clazz);
-  }
-
-  public boolean isNestedClass() {
-    return clazz.getEnclosingClass() != null;
-  }
-
-  public boolean isStatic() {
-    return Modifier.isStatic(clazz.getModifiers());
-  }
-
-  public void copy(final Object from, final Object to) {
-    for (final PojoField pojoField : pojoFields) {
-      if (pojoField.hasGetter() && pojoField.hasSetter()) {
-        final Object value = pojoField.invokeGetter(from);
-        pojoField.invokeSetter(to, value);
-      }
+    public boolean isConcrete() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  public Class<?> getClazz() {
-    return clazz;
-  }
-
-  @Override
-  public String toString() {
-    return String.format(this.getClass().getName() + " [clazz=%s, pojoFields=%s, pojoMethods=%s]", clazz, pojoFields,
-        pojoMethods);
-  }
-
-  public String toString(final Object instance) {
-    return ToStringHelper.pojoClassToString(this, instance);
-  }
-
-  public PojoClass getSuperClass() {
-    if (clazz.getSuperclass() != null) {
-      return PojoClassFactory.getPojoClass(clazz.getSuperclass());
+    public boolean isEnum() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return null;
-  }
 
-  public List<PojoClass> getInterfaces() {
-    final List<PojoClass> interfaces = new LinkedList<PojoClass>();
-    for (final Class<?> interfaze : clazz.getInterfaces()) {
-      interfaces.add(PojoClassFactory.getPojoClass(interfaze));
+    public boolean isArray() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    return interfaces;
-  }
 
-  public PojoPackage getPackage() {
-    return PojoPackageFactory.getPojoPackage(clazz.getPackage().getName());
-  }
-
-  public String getSourcePath() {
-    try {
-      final ClassLoader cl = this.getClazz().getClassLoader();
-      final URL location = cl.getResource(getClazz().getName().replace(Java.PACKAGE_DELIMITER, Java.PATH_DELIMITER)
-          + Java.CLASS_EXTENSION);
-      return new URLToFileSystemAdapter(location).getAsURI().toString();
-    } catch (final Exception e) {
-      throw ReflectionException.getInstance(e.getMessage(), e);
+    public boolean isFinal() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  @Override
-  public int hashCode() {
-    return name.hashCode();
-  }
-
-  @Override
-  public boolean equals(final Object other) {
-    if (other == null || !other.getClass().equals(this.getClass())) {
-      return false;
+    public boolean isSynthetic() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    PojoClassImpl otherPojoClass = (PojoClassImpl) other;
-    return name.equals(otherPojoClass.name);
-  }
 
-  public boolean isPrivate() {
-    return Modifier.isPrivate(clazz.getModifiers());
-  }
+    public List<PojoField> getPojoFields() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean isPackagePrivate() {
-    int modifiers = clazz.getModifiers();
+    public List<PojoField> getPojoFieldsAnnotatedWith(Class<? extends Annotation> annotation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return (Modifier.PUBLIC & modifiers
-        | Modifier.PROTECTED & modifiers
-        | Modifier.PRIVATE & modifiers) == 0;
-  }
+    public List<PojoMethod> getPojoMethods() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean isProtected() {
-    return Modifier.isProtected(clazz.getModifiers());
-  }
+    public List<PojoMethod> getPojoMethodsAnnotatedWith(Class<? extends Annotation> annotation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean isPublic() {
-    return Modifier.isPublic(clazz.getModifiers());
-  }
+    public List<PojoMethod> getPojoConstructors() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public PojoClass getEnclosingClass() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String getName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public List<? extends Annotation> getAnnotations() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean extendz(final Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isNestedClass() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isStatic() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void copy(final Object from, final Object to) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public Class<?> getClazz() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String toString(final Object instance) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public PojoClass getSuperClass() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public List<PojoClass> getInterfaces() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public PojoPackage getPackage() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public String getSourcePath() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public boolean equals(final Object other) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isPrivate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isPackagePrivate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isProtected() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isPublic() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

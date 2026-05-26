@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.utils;
 
 import java.util.Arrays;
@@ -25,97 +24,98 @@ import java.util.Arrays;
  */
 public class ObjectToString {
 
-  public static String toString(Object o) {
-    return getHandler(o).toString(o);
-  }
+    public static String toString(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private static ObjectToStringHandler getHandler(Object o) {
-    if (o == null)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return null;
-        }
-      };
+    private static ObjectToStringHandler getHandler(Object o) {
+        if (o == null)
+            return new ObjectToStringHandler() {
 
-    if (!o.getClass().isArray())
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return o.toString();
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (!o.getClass().isArray())
+            return new ObjectToStringHandler() {
 
-    // Array handling
-    // Since Java has no way of auto-boxing an array of primitives, each must be examined independently.
-    Class<?> componentType = o.getClass().getComponentType();
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        // Array handling
+        // Since Java has no way of auto-boxing an array of primitives, each must be examined independently.
+        Class<?> componentType = o.getClass().getComponentType();
+        if (componentType == byte.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == byte.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(byte[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == char.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == char.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(char[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == short.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == short.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(short[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == int.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == int.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(int[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == long.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == long.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(long[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == float.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == float.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(float[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == double.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == double.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(double[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        if (componentType == boolean.class)
+            return new ObjectToStringHandler() {
 
-    if (componentType == boolean.class)
-      return new ObjectToStringHandler() {
-        public String toString(Object o) {
-          return Arrays.toString(boolean[].class.cast(o));
-        }
-      };
+                public String toString(Object o) {
+                    throw new UnsupportedOperationException("STUB: not implemented");
+                }
+            };
+        return new ObjectToStringHandler() {
 
-    return new ObjectToStringHandler() {
-      public String toString(Object o) {
-        return Arrays.deepToString((Object[]) o);
-      }
-    };
-  }
+            public String toString(Object o) {
+                throw new UnsupportedOperationException("STUB: not implemented");
+            }
+        };
+    }
 
-  interface ObjectToStringHandler {
-    String toString(Object o);
-  }
+    interface ObjectToStringHandler {
 
-  private ObjectToString() {
-    throw new UnsupportedOperationException(ObjectToString.class.getName() +  " should not be constructed!");
-  }
+        String toString(Object o);
+    }
+
+    private ObjectToString() {
+        throw new UnsupportedOperationException(ObjectToString.class.getName() + " should not be constructed!");
+    }
 }

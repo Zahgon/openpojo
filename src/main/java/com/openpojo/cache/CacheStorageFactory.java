@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.cache;
 
 import com.openpojo.cache.impl.StrongRefHashMapCacheStorage;
@@ -28,29 +27,29 @@ import com.openpojo.cache.impl.WeakHashMapCacheStorage;
  */
 public class CacheStorageFactory {
 
-  /**
-   * Returns an instance of CacheStorage that will garbage collect automatically.
-   *
-   * @param <T>
-   *     The value type used for caching.
-   * @return returns an instance of TemporalCacheStorage.
-   */
-  public static <T> CacheStorage<T> getTemporalCacheStorage() {
-    return new WeakHashMapCacheStorage<T>();
-  }
+    /**
+     * Returns an instance of CacheStorage that will garbage collect automatically.
+     *
+     * @param <T>
+     *     The value type used for caching.
+     * @return returns an instance of TemporalCacheStorage.
+     */
+    public static <T> CacheStorage<T> getTemporalCacheStorage() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Returns an instance of CacheStorage that will not garbage collect automatically.
-   *
-   * @param <T>
-   *     The value type used for caching.
-   * @return returns an instance of PersistentCacheStorage.
-   */
-  public static <T> CacheStorage<T> getPersistentCacheStorage() {
-    return new StrongRefHashMapCacheStorage<T>();
-  }
+    /**
+     * Returns an instance of CacheStorage that will not garbage collect automatically.
+     *
+     * @param <T>
+     *     The value type used for caching.
+     * @return returns an instance of PersistentCacheStorage.
+     */
+    public static <T> CacheStorage<T> getPersistentCacheStorage() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private CacheStorageFactory() {
-    throw new UnsupportedOperationException(CacheStorageFactory.class.getName() + " should not be constructed!");
-  }
+    private CacheStorageFactory() {
+        throw new UnsupportedOperationException(CacheStorageFactory.class.getName() + " should not be constructed!");
+    }
 }

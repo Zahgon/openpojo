@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.construct.utils;
 
 /**
@@ -23,11 +22,8 @@ package com.openpojo.reflection.construct.utils;
  */
 public class GreaterThan extends ArrayLengthBasedComparator {
 
-  @Override
-  public boolean compare(final Class<?>[] leftHand, final Class<?>[] rightHand) {
-    int leftHandLength = getLength(leftHand);
-    int rightHandLength = getLength(rightHand);
-    return leftHandLength > rightHandLength;
-  }
-
+    @Override
+    public boolean compare(final Class<?>[] leftHand, final Class<?>[] rightHand) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

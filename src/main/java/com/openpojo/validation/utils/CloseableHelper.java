@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.utils;
 
 import java.io.Closeable;
@@ -25,17 +24,11 @@ import java.io.Closeable;
  */
 public class CloseableHelper {
 
-  public static void closeResources(Closeable... closeables) {
-    if (closeables != null)
-      for (Closeable closeable : closeables)
-        try {
-          if (closeable != null)
-            closeable.close();
-        } catch (Exception ignored) {
-        }
-  }
+    public static void closeResources(Closeable... closeables) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private CloseableHelper() {
-    throw new UnsupportedOperationException(CloseableHelper.class.getName() +  " should not be constructed!");
-  }
+    private CloseableHelper() {
+        throw new UnsupportedOperationException(CloseableHelper.class.getName() + " should not be constructed!");
+    }
 }

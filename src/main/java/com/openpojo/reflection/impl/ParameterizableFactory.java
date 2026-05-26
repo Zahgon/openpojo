@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
-
 import com.openpojo.reflection.Parameterizable;
 import com.openpojo.reflection.java.type.Resolver;
 
@@ -31,31 +29,32 @@ import com.openpojo.reflection.java.type.Resolver;
  */
 public class ParameterizableFactory {
 
-  public static Parameterizable getInstance(Type type) {
-    return new ParameterizableImpl(type);
-  }
-
-  private static class ParameterizableImpl implements Parameterizable {
-    private final Type type;
-
-    public ParameterizableImpl(Type type) {
-      this.type = type;
+    public static Parameterizable getInstance(Type type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    public Class<?> getType() {
-      return (Class<?>) Resolver.resolve(type);
+    private static class ParameterizableImpl implements Parameterizable {
+
+        private final Type type;
+
+        public ParameterizableImpl(Type type) {
+            this.type = type;
+        }
+
+        public Class<?> getType() {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        public boolean isParameterized() {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        public List<Type> getParameterTypes() {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
     }
 
-    public boolean isParameterized() {
-      return type instanceof ParameterizedType;
+    private ParameterizableFactory() {
+        throw new UnsupportedOperationException(ParameterizableFactory.class.getName() + " should not be constructed!");
     }
-
-    public List<Type> getParameterTypes() {
-      return Arrays.asList(Resolver.getParameterTypes(type));
-    }
-  }
-
-  private ParameterizableFactory() {
-      throw new UnsupportedOperationException(ParameterizableFactory.class.getName() + " should not be constructed!");
-  }
 }

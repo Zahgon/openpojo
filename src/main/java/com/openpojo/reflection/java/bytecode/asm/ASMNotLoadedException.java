@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.reflection.java.bytecode.asm;
 
 /**
@@ -23,19 +22,19 @@ package com.openpojo.reflection.java.bytecode.asm;
  */
 public class ASMNotLoadedException extends RuntimeException {
 
-  private ASMNotLoadedException() {
-    this("ASM v5.0+ library required, please see http://asm.ow2.org/");
-  }
+    private ASMNotLoadedException() {
+        this("ASM v5.0+ library required, please see http://asm.ow2.org/");
+    }
 
-  private ASMNotLoadedException(String message) {
-    super(message);
-  }
+    private ASMNotLoadedException(String message) {
+        super(message);
+    }
 
-  public static ASMNotLoadedException getInstance() {
-    return new ASMNotLoadedException();
-  }
+    public static ASMNotLoadedException getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public static ASMNotLoadedException getInstance(String message) {
-    return new ASMNotLoadedException(message);
-  }
+    public static ASMNotLoadedException getInstance(String message) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

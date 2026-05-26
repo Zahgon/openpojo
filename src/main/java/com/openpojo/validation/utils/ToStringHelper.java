@@ -15,22 +15,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.validation.utils;
 
 /**
  * @author oshoukry
  */
 public final class ToStringHelper {
-  public static String safeToString(Object o) {
-    try {
-      return "" + o;
-    } catch (Exception e) {
-      return "Error calling toString: '" + e.toString() + "'";
-    }
-  }
 
-  private ToStringHelper() {
-    throw new UnsupportedOperationException(ToStringHelper.class.getName() +  " should not be constructed!");
-  }
+    public static String safeToString(Object o) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private ToStringHelper() {
+        throw new UnsupportedOperationException(ToStringHelper.class.getName() + " should not be constructed!");
+    }
 }

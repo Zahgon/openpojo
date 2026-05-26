@@ -16,13 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.dynamic;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-
 import com.openpojo.random.RandomFactory;
 import com.openpojo.reflection.impl.ParameterizableFactory;
 
@@ -35,43 +33,31 @@ import com.openpojo.reflection.impl.ParameterizableFactory;
  */
 public class RandomReturnInvocationHandler implements InvocationHandler, Serializable {
 
-  private RandomReturnInvocationHandler() {
-  }
-
-  public Object invoke(final Object proxy, final Method method, final Object[] args) {
-    if (method.getName().equals("toString")) {
-      return objectToString(proxy);
+    private RandomReturnInvocationHandler() {
     }
 
-    if (method.getName().equals("equals")) {
-      return objectEquals(proxy, args[0]);
+    public Object invoke(final Object proxy, final Method method, final Object[] args) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    if (method.getName().equals("hashCode")) {
-      return objectHashCode(proxy);
+    private String objectToString(final Object proxy) {
+        return proxy.getClass().getName() + '@' + System.identityHashCode(proxy);
     }
 
-    return RandomFactory.getRandomValue(ParameterizableFactory.getInstance(method.getGenericReturnType()));
-  }
+    private int objectHashCode(final Object proxy) {
+        return System.identityHashCode(proxy);
+    }
 
-  private String objectToString(final Object proxy) {
-    return proxy.getClass().getName() + '@' + System.identityHashCode(proxy);
-  }
+    private boolean objectEquals(final Object proxy, final Object other) {
+        return System.identityHashCode(proxy) == System.identityHashCode(other);
+    }
 
-  private int objectHashCode(final Object proxy) {
-    return System.identityHashCode(proxy);
-  }
+    public static InvocationHandler getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private boolean objectEquals(final Object proxy, final Object other) {
-    return System.identityHashCode(proxy) == System.identityHashCode(other);
-  }
+    private static class Instance {
 
-  public static InvocationHandler getInstance() {
-    return Instance.INSTANCE;
-  }
-
-  private static class Instance {
-    private static final InvocationHandler INSTANCE = new RandomReturnInvocationHandler();
-  }
-
+        private static final InvocationHandler INSTANCE = new RandomReturnInvocationHandler();
+    }
 }

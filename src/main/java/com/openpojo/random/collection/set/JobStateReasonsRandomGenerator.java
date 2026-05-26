@@ -15,14 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.openpojo.random.collection.set;
 
 import java.util.Arrays;
 import java.util.Collection;
 import javax.print.attribute.standard.JobStateReason;
 import javax.print.attribute.standard.JobStateReasons;
-
 import com.openpojo.random.collection.util.BaseCollectionRandomGenerator;
 import com.openpojo.random.collection.util.CollectionHelper;
 import com.openpojo.random.util.Helper;
@@ -32,32 +30,32 @@ import com.openpojo.reflection.Parameterizable;
  * @author oshoukry
  */
 public class JobStateReasonsRandomGenerator extends BaseCollectionRandomGenerator {
-  private static final Class<?>[] TYPES = new Class<?>[] { JobStateReasons.class };
-  private static final JobStateReasonsRandomGenerator INSTANCE = new JobStateReasonsRandomGenerator();
 
-  public static JobStateReasonsRandomGenerator getInstance() {
-    return INSTANCE;
-  }
+    private static final Class<?>[] TYPES = new Class<?>[] { JobStateReasons.class };
 
-  public Collection doGenerate(Class<?> type) {
-    return CollectionHelper.buildCollections(getBasicInstance(type), JobStateReason.class);
-  }
+    private static final JobStateReasonsRandomGenerator INSTANCE = new JobStateReasonsRandomGenerator();
 
-  public Collection doGenerate(Parameterizable parameterizedType) {
-    return CollectionHelper.buildCollections(doGenerate(parameterizedType.getType()),
-        parameterizedType.getParameterTypes().get(0));
-  }
+    public static JobStateReasonsRandomGenerator getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public Collection<Class<?>> getTypes() {
-    return Arrays.asList(TYPES);
-  }
+    public Collection doGenerate(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  protected Collection getBasicInstance(Class<?> type) {
-    Helper.assertIsAssignableTo(type, getTypes());
-    return new JobStateReasons();
-  }
+    public Collection doGenerate(Parameterizable parameterizedType) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  private JobStateReasonsRandomGenerator() {
-  }
+    public Collection<Class<?>> getTypes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    protected Collection getBasicInstance(Class<?> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private JobStateReasonsRandomGenerator() {
+    }
 }
